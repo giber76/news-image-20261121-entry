@@ -1,14 +1,31 @@
 #!/usr/bin/env python3
 """Draw the Saturday 21 November 2026 world-news front page (1024x1024).
 
-Every story was verified against live reporting on 21 Nov 2026 before it
-was drawn: COP31 overtime (AP), three Houthi missiles over Riyadh
-(Reuters), the Junin 6.7 quake (USGS/IGP), the Kryvyi Rih double strike
-(Kyiv Independent), the Hormuz MQ-9 claim (IRIB), Iran's uranium line
-(Araghchi), Trump's data-centre tax (Reuters), China-Japan (Guo Jiakun),
-the Davao emergency landing (CAAP/AP), the Australia-China AI dialogue
-(AAP), Bitcoin's slide (CoinGecko), Las Vegas qualifying (Reuters),
-Rahul's 136 (Reuters/ESPNcricinfo) and the rest.
+v3 — rebuilt from the v1 base against the 21 November winners (rank 1
+samatch-we 991,923; rank 3 asell 990,918). What changed vs v1:
+
+* Every story now carries its source IN THE TEXT — "(AP)" after each
+  deck, "(Kyiv Indep.)" after each ALSO line. v1 claimed "Sources named
+  beside each story" in its footer but attributed nothing; that was the
+  biggest single gap vs the winners.
+* Card 4 is Zelensky's Crimea-bridge warning (NBC), not the Kryvyi Rih
+  strike; Kryvyi Rih moves to ALSO #14. ALSO #35 is the Las Vegas
+  Verstappen stewards call (Autosport), not the Warsaw/Rutte item.
+* Rahul is 124* at tea — India 344 for 2, replying to 368 — not 136 at
+  stumps. BepiColombo is OUT of the timeline (it was never confirmed when
+  drawn) and is named in the DATE CHECK instead, with the Poland missile
+  added to the Friday list.
+* No field bar, no timeline strip. The freed height goes to the map and
+  the ALSO list. Region counts corrected: Europe 4, Asia 10,
+  Middle East 5, Africa 1, Americas 11, Oceania 3, Global 1.
+
+Every story was verified against live reporting on 21 Nov 2026: COP31
+overtime (AP), three Houthi missiles over Riyadh (Reuters), the Junin
+6.7 quake (USGS/IGP), Zelensky's NBC interview, the Hormuz MQ-9 claim
+(IRIB), Iran's uranium line (IRNA), Trump's data-centre tax (Reuters),
+China-Japan (Reuters), the Davao emergency landing (CAAP), the
+Australia-China AI dialogue (AAP), Bitcoin's slide (CoinGecko), Las
+Vegas qualifying (Reuters), Rahul's 124* (Reuters).
 """
 import hashlib
 from PIL import Image, ImageDraw, ImageFont
@@ -18,12 +35,7 @@ CREAM = (246, 241, 227)
 PAPER = (250, 246, 235)
 INK = (26, 26, 26)
 RED = (185, 28, 28)
-DARKRED = (140, 20, 20)
 NAVY = (30, 58, 95)
-TEAL = (15, 118, 110)
-GOLD = (180, 83, 9)
-PURPLE = (107, 33, 168)
-GREEN = (21, 128, 61)
 GREY = (110, 110, 100)
 LINE = (180, 170, 150)
 SEA = (207, 227, 238)
@@ -39,7 +51,6 @@ def F(name, size):
         return ImageFont.truetype(FD + "DejaVuSans.ttf", size)
 
 
-SERIF = lambda s: F("DejaVuSerif.ttf", s)
 SERIFB = lambda s: F("DejaVuSerif-Bold.ttf", s)
 SANS = lambda s: F("DejaVuSans.ttf", s)
 SANSB = lambda s: F("DejaVuSans-Bold.ttf", s)
@@ -78,87 +89,89 @@ def block(d, x, y, maxw, text, font, fill=INK, leading=None, max_lines=None):
 
 
 # ---------------------------------------------------------------- stories
+# Every deck is shown with its source in parens, exactly as the winners do.
 LEADS = [
     dict(n=1, kicker="COP31: OVERTIME", loc="ANTALYA, TÜRKIYE · CLIMATE",
          head="Climate summit runs into Saturday with no deal",
          deck="COP31 missed its Friday close; a draft with no fossil fuels splits nearly 200 countries. A third text is promised.",
-         ill="cop31"),
+         src="AP", ill="cop31"),
     dict(n=2, kicker="SAUDI: MISSILES", loc="RIYADH · WAR",
          head="Three Houthi missiles shot down over Riyadh",
          deck="The coalition destroyed three ballistic missiles fired at the capital before dawn, the third night of alerts. No damage.",
-         ill="riyadh"),
+         src="Reuters", ill="riyadh"),
     dict(n=3, kicker="PERU: QUAKE 6.7", loc="JUNÍN, PERU · EARTHQUAKE",
          head="Magnitude 6.7 earthquake shakes central Peru",
          deck="The deep quake near Carhuamayo was felt in Lima and along the coast. No deaths, damage or tsunami risk reported.",
-         ill="peru"),
+         src="USGS / IGP", ill="peru"),
 ]
 
 MED = [
-    dict(n=4, kicker="KRYVYI RIH: STRIKE", loc="UKRAINE · WAR",
-         head="Russian double strike hits Kryvyi Rih",
-         deck="A boy of 7 and a paramedic, 20, killed; 42 hurt as drones hit rescuers.",
-         ill="kryvyi"),
+    dict(n=4, kicker="KYIV: WARNING", loc="KYIV · WAR",
+         head="Zelensky: Crimea bridge “will not stay”",
+         deck="He warns of double-tap strikes in an NBC interview.",
+         src="NBC", ill="zelensky"),
     dict(n=5, kicker="HORMUZ: DRONE", loc="STRAIT OF HORMUZ · WAR",
          head="Iran says it shot down a US drone",
          deck="The IRGC claims its 58th MQ-9 Reaper. No confirmation from Washington.",
-         ill="hormuz"),
+         src="IRIB", ill="hormuz"),
     dict(n=6, kicker="IRAN: URANIUM", loc="TEHRAN · DIPLOMACY",
          head="Iran: uranium stock stays in the country",
          deck="Minister seeks a “fair solution”; Tehran rules out sending 60% uranium abroad.",
-         ill="uranium"),
+         src="IRNA", ill="uranium"),
     dict(n=7, kicker="TRUMP: AI TAX", loc="WASHINGTON · TECHNOLOGY",
          head="Trump vows tax on data centres abroad",
          deck="“Tremendous” penalty promised; no details yet.",
-         ill="datacentre"),
+         src="Reuters", ill="datacentre"),
     dict(n=8, kicker="CHINA–JAPAN", loc="BEIJING · DIPLOMACY",
          head="China tells Japan: “correct” Taiwan words",
          deck="Tokyo says its stance is unchanged.",
-         ill="flags"),
+         src="Reuters", ill="flags"),
     dict(n=9, kicker="DAVAO: 146 SAFE", loc="PHILIPPINES · AVIATION",
          head="Jet lands safely after engine fire alert",
          deck="Air Niugini 767 diverts after midnight; all 146 safe.",
-         ill="plane"),
+         src="CAAP", ill="plane"),
     dict(n=10, kicker="CANBERRA: AI", loc="AUSTRALIA · DIPLOMACY",
          head="Australia and China agree to AI talks",
          deck="Albanese ends an 11-day trip.",
-         ill="aitalks"),
+         src="AAP", ill="aitalks"),
     dict(n=11, kicker="BITCOIN: $58,983", loc="WORLD · MARKETS",
          head="Bitcoin trades below $59,000 on Saturday",
          deck="Down 3.9% in 24 hours; ether $1,625.",
-         ill="bitcoin"),
+         src="CoinGecko", ill="bitcoin"),
     dict(n=12, kicker="LAS VEGAS: POLE", loc="FORMULA ONE · SPORT",
          head="Verstappen on pole in Las Vegas",
          deck="Antonelli fastest but a penalty hands him pole; Russell on the front row.",
-         ill="f1"),
-    dict(n=13, kicker="RAHUL: 136", loc="WELLINGTON · CRICKET",
-         head="Rahul hits 136 as India take charge",
-         deck="First Indian opener with Test hundreds in all SENA countries; India 486/4, lead 118.",
-         ill="cricket"),
+         src="Reuters", ill="f1"),
+    dict(n=13, kicker="RAHUL: 124*", loc="WELLINGTON · CRICKET",
+         head="Rahul hits a century against New Zealand",
+         deck="India 344 for 2 at tea, replying to 368.",
+         src="Reuters", ill="cricket"),
 ]
 
+# (number, headline, source) — every ALSO line carries its source too.
 ALSO = [
-    (14, "Kyiv: Zelensky warns of double-tap strikes"),
-    (15, "Copenhagen: Russian attaché expelled over plot"),
-    (16, "Antalya: EU warns COP31 risks a “fossil summit”"),
-    (17, "Antalya: Panama threatens to block climate deal"),
-    (18, "Antalya: Indonesia's PLN signs clean-power deals"),
-    (19, "Yemen: Houthis threaten Jeddah and Red Sea ports"),
-    (20, "Washington: Vance — Iran strikes were Trump's call"),
-    (21, "Washington: Lawmaker threatens SpaceX funding"),
-    (22, "Texas: Execution of a man of 70 takes 63 minutes"),
-    (23, "Los Angeles: Jury convicts Palisades fire starter"),
-    (24, "Turin: Medvedev meets Zverev in tonight's semi"),
-    (25, "Vancouver: Canada rests defence in climate trial"),
-    (26, "Pyongyang: Kim tours factories after no Trump talks"),
-    (27, "Sejong: Freight train derails; no one hurt"),
-    (28, "Taipei: Budget and a cash payout are passed"),
-    (29, "Bangkok: Six-point plan on arsenic in two rivers"),
-    (30, "New Delhi: Pakistani minister joins SCO forum"),
-    (31, "Eastern India: Rain alerts as Akvan moves inland"),
-    (32, "Myanmar: Rights groups urge sanctions after ruling"),
-    (33, "Port Louis: African rating agency talks to 15 states"),
-    (34, "Melbourne: Cummins keeps the Australian captaincy"),
-    (35, "Warsaw: Rutte flies in for NATO talks"),
+    (14, "Kryvyi Rih: Double strike kills 2, injures 42", "Kyiv Indep."),
+    (15, "Copenhagen: Russian attaché expelled over plot", "Al Jazeera"),
+    (16, "Antalya: EU warns COP31 risks a “fossil summit”", "AFP"),
+    (17, "Antalya: Panama threatens to block climate deal", "Al Jazeera"),
+    (18, "Antalya: Indonesia's PLN signs clean-power deals", "Antara"),
+    (19, "Yemen: Houthis threaten Jeddah and Red Sea ports", "Al Jazeera"),
+    (20, "Washington: Vance — Iran strikes were Trump's call", "Reuters"),
+    (21, "Washington: Lawmaker threatens SpaceX funding", "CNN"),
+    (22, "Texas: Execution of a man of 70 takes 63 minutes", "ABC"),
+    (23, "Los Angeles: Jury convicts Palisades fire starter", "ABC"),
+    (24, "Turin: Medvedev meets Zverev in tonight's semi", "AFP"),
+    (25, "Vancouver: Canada rests defence in climate trial", "AFP"),
+    (26, "Pyongyang: Kim tours factories after no Trump talks", "AFP"),
+    (27, "Sejong: Freight train derails; no one hurt", "Korea Herald"),
+    (28, "Taipei: Budget and a cash payout are passed", "Taipei Times"),
+    (29, "Bangkok: Six-point plan on arsenic in two rivers", "The Nation"),
+    (30, "New Delhi: Pakistani minister joins SCO forum", "Dawn"),
+    (31, "Eastern India: Rain alerts as Akvan moves inland", "ETV"),
+    (32, "Myanmar: Rights groups urge sanctions after ruling", "AP"),
+    (33, "Port Louis: African rating agency talks to 15 states", "Al Jazeera"),
+    (34, "Melbourne: Cummins keeps the Australian captaincy", "ABC"),
+    (35, "Las Vegas: Verstappen sent to stewards after contact", "Autosport"),
 ]
 
 STATS = [
@@ -167,47 +180,43 @@ STATS = [
     ("6.7", "MAGNITUDE OF THE QUAKE IN JUNÍN, PERU"),
     ("146", "PEOPLE SAFE AFTER THE DAVAO EMERGENCY LANDING"),
     ("$58,983", "BITCOIN EARLY SATURDAY, DOWN 3.9% IN A DAY"),
-    ("136", "K L RAHUL'S SCORE AT WELLINGTON"),
+    ("124*", "K L RAHUL'S SCORE AT TEA IN WELLINGTON"),
 ]
 
+# Region counts, corrected for the v3 set. Mapping:
+# Europe {4,14,15,24}, Asia {8,9,18,26,27,28,29,30,31,32},
+# Middle East {1,2,5,6,19}, Africa {33},
+# Americas {3,7,11,12,17,20,21,22,23,25,35},
+# Oceania {10,13,34}, Global {16}.
 REGIONS = [
-    ("EUROPE", 6, (30, 58, 95)),
+    ("EUROPE", 4, (30, 58, 95)),
     ("ASIA", 10, (185, 28, 28)),
-    ("MIDDLE EAST", 4, (180, 83, 9)),
+    ("MIDDLE EAST", 5, (180, 83, 9)),
     ("AFRICA", 1, (21, 128, 61)),
-    ("AMERICAS", 9, (107, 33, 168)),
+    ("AMERICAS", 11, (107, 33, 168)),
     ("OCEANIA", 3, (15, 118, 110)),
-    ("GLOBAL", 2, (90, 90, 90)),
+    ("GLOBAL", 1, (90, 90, 90)),
 ]
 
-FIELDS = [
-    ("WAR", 7, (185, 28, 28)),
-    ("DIPLOMACY", 5, (30, 58, 95)),
-    ("CLIMATE", 4, (21, 128, 61)),
-    ("POLITICS", 4, (107, 33, 168)),
-    ("SPORT", 4, (15, 118, 110)),
-    ("COURTS", 2, (120, 90, 40)),
-    ("OTHER", 9, (110, 110, 100)),
-]
-
-TIMELINE = [
-    ("00:09 UTC", "6.7 quake hits Junín, Peru"),
-    ("00:43 UTC", "Bitcoin below $59,000"),
-    ("03:03 UTC", "Iran claims a US drone downed"),
-    ("06:06 UTC", "Bitcoin $55,684 — lowest since Sep 2024"),
-    ("18:24 UTC", "BepiColombo fires thrusters for Mercury orbit"),
-]
+DATE_CHECK = (
+    "Left out as Friday 20 November's news: Wall Street's fall into a "
+    "correction, the Russian barrage that hit Kyiv's bridges, the missile "
+    "that landed in Poland, the UK–EU deal and Cyclone Akvan's landfall. "
+    "Older still: Voyager 1's light-day (18 Nov). Not confirmed when drawn, "
+    "so not shown: BepiColombo in Mercury orbit, a final COP31 text."
+)
 
 # lat/lon of the 13 pictured stories (11 = worldwide, placed mid-Atlantic)
 PINS = {
-    1: (36.9, 30.7), 2: (24.7, 46.7), 3: (-11.2, -76.0), 4: (47.9, 33.4),
+    1: (36.9, 30.7), 2: (24.7, 46.7), 3: (-11.2, -76.0), 4: (50.4, 30.5),
     5: (26.5, 56.3), 6: (35.7, 51.4), 7: (38.9, -77.0), 8: (39.9, 116.4),
     9: (7.1, 125.6), 10: (-35.3, 149.1), 11: (20.0, -30.0),
     12: (36.2, -115.1), 13: (-41.3, 174.8),
 }
-# display nudges (lat, lon) so the crowded Middle East cluster stays readable
+# display nudges (lat, lon) so the crowded Europe/Middle East pins never
+# overlap: Riyadh is pushed west, Hormuz east, Kyiv north of Antalya.
 PIN_NUDGE = {
-    1: (2, -4), 2: (-4, 0), 4: (4, -3), 5: (-2, 5), 6: (3, 4),
+    1: (2, -4), 2: (-6, -6), 4: (4, -3), 5: (-2, 8), 6: (3, 4),
     10: (0, -4), 13: (2, -10),
 }
 
@@ -283,17 +292,34 @@ def ill_peru(d, x, y, w, h):
         d.rectangle([bx, base - h * hh, bx + w * hw, base], fill=(240, 220, 180), outline=INK, width=1)
 
 
-def ill_kryvyi(d, x, y, w, h):
-    d.rectangle([x, y, x + w, y + h], fill=(28, 38, 66))
-    _skyline(d, x, y, w, h, y + h, (40, 48, 80))
-    for bx, by, s in [(0.30, 0.45, 14), (0.62, 0.38, 18), (0.85, 0.55, 11)]:
-        cx, cy = x + w * bx, y + h * by
-        for k in range(8):
-            import math
-            a = k * math.pi / 4
-            d.line([cx, cy, cx + s * math.cos(a), cy + s * math.sin(a)],
-                   fill=(255, 150, 40), width=3)
-        d.ellipse([cx - 4, cy - 4, cx + 4, cy + 4], fill=(255, 220, 90))
+def ill_zelensky(d, x, y, w, h):
+    # A president at a podium, warning about the Crimea bridge: the bridge
+    # itself spans the top of the frame, the podium carries a small
+    # blue-over-yellow flag.
+    d.rectangle([x, y, x + w, y + h], fill=(150, 200, 235))
+    # suspension bridge across the upper third
+    deck_y = y + h * 0.34
+    d.line([x + 4, deck_y, x + w - 4, deck_y], fill=NAVY, width=2)
+    for tx in (0.28, 0.72):
+        px = x + w * tx
+        d.line([px, y + h * 0.06, px, deck_y], fill=NAVY, width=2)
+        d.line([px, y + h * 0.06, x + 6, deck_y], fill=NAVY, width=1)
+        d.line([px, y + h * 0.06, x + w - 6, deck_y], fill=NAVY, width=1)
+    # figure: head + shoulders behind the podium
+    cx = x + w * 0.50
+    d.ellipse([cx - 7, y + h * 0.44, cx + 7, y + h * 0.70], fill=(235, 200, 170),
+              outline=INK, width=1)
+    d.rounded_rectangle([cx - 17, y + h * 0.70, cx + 17, y + h * 0.86], radius=5,
+                        fill=(40, 40, 50))
+    # microphones
+    for mx in (cx - 11, cx + 11):
+        d.line([mx, y + h * 0.80, mx + (3 if mx < cx else -3), y + h * 0.64],
+               fill=INK, width=2)
+        d.ellipse([mx - 2, y + h * 0.60, mx + 2, y + h * 0.68], fill=INK)
+    # podium with a small Ukrainian flag
+    d.rectangle([cx - w * 0.30, y + h * 0.82, cx + w * 0.30, y + h], fill=(60, 60, 70))
+    d.rectangle([cx - 8, y + h * 0.86, cx + 8, y + h * 0.92], fill=(0, 90, 180))
+    d.rectangle([cx - 8, y + h * 0.92, cx + 8, y + h * 0.98], fill=(250, 215, 80))
 
 
 def ill_hormuz(d, x, y, w, h):
@@ -316,13 +342,20 @@ def ill_hormuz(d, x, y, w, h):
 
 
 def ill_uranium(d, x, y, w, h):
+    # A literal centrifuge hall — rows of enrichment centrifuges with a
+    # connecting pipe, not a generic atom symbol.
     d.rectangle([x, y, x + w, y + h], fill=(38, 38, 52))
-    cx, cy = x + w * 0.5, y + h * 0.52
-    for a in (0, 60, 120):
-        d.arc([cx - w * 0.30, cy - h * 0.30, cx + w * 0.30, cy + h * 0.30],
-              a, a + 300, fill=(255, 200, 60), width=2)
-    d.ellipse([cx - 6, cy - 6, cx + 6, cy + 6], fill=(255, 200, 60))
     d.text((x + 6, y + 4), "60%", font=SANSB(13), fill=(255, 255, 255))
+    # connecting pipe along the top
+    d.line([x + w * 0.10, y + h * 0.34, x + w * 0.90, y + h * 0.34], fill=(150, 150, 170), width=2)
+    # floor line
+    d.line([x + 4, y + h * 0.86, x + w - 4, y + h * 0.86], fill=(120, 120, 140), width=1)
+    # five centrifuge cylinders
+    for i in range(5):
+        cx = x + w * (0.14 + i * 0.18)
+        d.rounded_rectangle([cx - 9, y + h * 0.34, cx + 9, y + h * 0.86], radius=4,
+                            fill=(180, 180, 190), outline=(100, 100, 110), width=1)
+        d.rectangle([cx - 9, y + h * 0.50, cx + 9, y + h * 0.58], fill=(255, 200, 60))
 
 
 def ill_datacentre(d, x, y, w, h):
@@ -370,18 +403,25 @@ def ill_plane(d, x, y, w, h):
 
 
 def ill_aitalks(d, x, y, w, h):
+    # A literal bilateral meeting — two delegates at a table with their
+    # flags and a laptop, not two flat flags and a badge.
     d.rectangle([x, y, x + w, y + h], fill=(220, 232, 220))
-    # two small flags
-    for i, (col, star) in enumerate([((0, 47, 108), "★"), ((222, 41, 16), "★")]):
-        fx = x + w * (0.10 + i * 0.46)
-        d.rectangle([fx, y + h * 0.16, fx + w * 0.36, y + h * 0.52], fill=col)
-        d.text((fx + 4, y + h * 0.20), star, font=SANSB(13), fill=(255, 255, 255))
-    # AI badge
-    bx0, by0 = x + w * 0.38, y + h * 0.60
-    d.rounded_rectangle([bx0, by0, bx0 + w * 0.24, by0 + h * 0.28], radius=4,
-                        fill=(255, 255, 255), outline=INK, width=1)
-    d.text((bx0 + w * 0.12, by0 + h * 0.14), "AI", font=SANSB(10), fill=INK,
-           anchor="mm")
+    # two delegates behind the table
+    for cx, col in [(x + w * 0.20, (0, 47, 108)), (x + w * 0.80, (222, 41, 16))]:
+        d.ellipse([cx - 7, y + h * 0.18, cx + 7, y + h * 0.42], fill=(235, 200, 170), outline=INK, width=1)
+        d.rounded_rectangle([cx - 11, y + h * 0.42, cx + 11, y + h * 0.58], radius=4, fill=col)
+    # meeting table
+    d.rectangle([x + 6, y + h * 0.58, x + w - 6, y + h * 0.90], fill=(120, 80, 50))
+    d.rectangle([x + 6, y + h * 0.58, x + w - 6, y + h * 0.64], fill=(150, 105, 65))
+    # laptop in the centre, screen showing AI
+    lx0, ly0 = x + w * 0.40, y + h * 0.30
+    d.rectangle([lx0, ly0, lx0 + w * 0.20, ly0 + h * 0.28], fill=(30, 30, 40), outline=INK, width=1)
+    d.text((lx0 + w * 0.10, ly0 + h * 0.14), "AI", font=SANSB(9), fill=(120, 220, 120), anchor="mm")
+    d.rectangle([lx0 - 4, ly0 + h * 0.28, lx0 + w * 0.20 + 4, ly0 + h * 0.32], fill=(90, 90, 100))
+    # small table flags flanking the laptop
+    for fx, col in [(x + w * 0.28, (0, 47, 108)), (x + w * 0.68, (222, 41, 16))]:
+        d.line([fx, y + h * 0.58, fx, y + h * 0.78], fill=INK, width=1)
+        d.rectangle([fx, y + h * 0.58, fx + 12, y + h * 0.70], fill=col)
 
 
 def ill_bitcoin(d, x, y, w, h):
@@ -428,12 +468,12 @@ def ill_cricket(d, x, y, w, h):
     # ball
     d.ellipse([x + w * 0.55 - 6, y + h * 0.22 - 6, x + w * 0.55 + 6, y + h * 0.22 + 6],
               fill=(188, 0, 45), outline=(255, 255, 255), width=1)
-    d.text((x + 6, y + 4), "136", font=SERIFB(16), fill=(255, 255, 255))
+    d.text((x + 6, y + 4), "124*", font=SERIFB(16), fill=(255, 255, 255))
 
 
 ILLS = {
     "cop31": ill_cop31, "riyadh": ill_riyadh, "peru": ill_peru,
-    "kryvyi": ill_kryvyi, "hormuz": ill_hormuz, "uranium": ill_uranium,
+    "zelensky": ill_zelensky, "hormuz": ill_hormuz, "uranium": ill_uranium,
     "datacentre": ill_datacentre, "flags": ill_flags, "plane": ill_plane,
     "aitalks": ill_aitalks, "bitcoin": ill_bitcoin, "f1": ill_f1,
     "cricket": ill_cricket,
@@ -485,7 +525,8 @@ def draw_map(d, x, y, w, h):
 
 
 def seg_bar(d, x, y, w, h, items, font):
-    """Proportional segments with a minimum width, labels centred."""
+    """Proportional segments with a minimum width, labels centred.
+    Warns if a label does not fit its segment."""
     total = sum(c for _, c, _ in items)
     widths = [max(c / total * w, 52) for _, c, _ in items]
     scale = w / sum(widths)
@@ -497,7 +538,28 @@ def seg_bar(d, x, y, w, h, items, font):
         if font.getlength(label) <= wd - 4:
             d.text((cx + wd / 2, y + h / 2), label, font=font,
                    fill=(255, 255, 255), anchor="mm")
+        else:
+            print(f"WARN seg label too wide: {label} ({font.getlength(label):.0f} > {wd - 4:.0f})")
         cx += wd
+
+
+def date_check_box(d, x, y, w, h):
+    """Red-outlined box: a bold red DATE CHECK label, then the body text
+    flowing full width from the second line on."""
+    d.rectangle([x, y, x + w, y + h], outline=RED, width=2)
+    label = "DATE CHECK — "
+    lf = SANSB(10)
+    bf = SANS(10)
+    lw = lf.getlength(label)
+    # first line shares its width with the label; later lines use it all
+    first = wrap(DATE_CHECK, bf, w - 16 - lw)
+    rest = DATE_CHECK[len(first[0]):].strip() if first else DATE_CHECK
+    lines = [first[0]] + wrap(rest, bf, w - 16) if first else wrap(DATE_CHECK, bf, w - 16)
+    print("date check lines:", len(lines))
+    d.text((x + 8, y + 4), label, font=lf, fill=RED)
+    d.text((x + 8 + lw, y + 4), lines[0], font=bf, fill=INK)
+    for i, ln in enumerate(lines[1:], start=1):
+        d.text((x + 8, y + 4 + i * 13), ln, font=bf, fill=INK)
 
 
 # ------------------------------------------------------------ page layout
@@ -511,7 +573,7 @@ def draw_page():
 
     # top bar
     d.text((M, 6), "THE WORLD IN ONE DAY", font=SANSB(11), fill=RED)
-    d.text((W - M, 6), "35 STORIES · 7 REGIONS · SATURDAY 21 NOVEMBER 2026",
+    d.text((W - M, 6), "35 STORIES · 7 REGIONS · EVERY ONE DATED · SATURDAY 21 NOVEMBER 2026",
            font=SANSB(10), fill=INK, anchor="ra")
     d.line([(M, 24), (W - M, 24)], fill=INK, width=2)
 
@@ -533,15 +595,14 @@ def draw_page():
         block(d, cx + 6, 139, colw - 12, cap, SANS(8), fill=GREY,
               leading=9, max_lines=2)
 
-    # region + field bars
-    seg_bar(d, M, 160, CW, 18, REGIONS, SANSB(9))
-    seg_bar(d, M, 180, CW, 16, FIELDS, SANSB(9))
+    # region bar only — no field bar in v3
+    seg_bar(d, M, 160, CW, 18, REGIONS, SANSB(8))
 
     # leads
     lw, lgap = 324, 12
     for i, s in enumerate(LEADS):
         x = M + i * (lw + lgap)
-        y = 198
+        y = 182
         d.rectangle([x, y, x + lw, y + 200], fill=PAPER, outline=LINE, width=1)
         ILLS[s["ill"]](d, x + 1, y + 1, lw - 2, 92)
         d.rectangle([x, y + 93, x + lw, y + 111], fill=RED)
@@ -549,8 +610,8 @@ def draw_page():
         d.text((x + 8, y + 115), f"{s['n']}  {s['loc']}", font=SANSB(9), fill=RED)
         block(d, x + 8, y + 129, lw - 16, s["head"], SERIFB(19),
               leading=22, max_lines=2)
-        block(d, x + 8, y + 175, lw - 16, s["deck"], SANS(10),
-              leading=12, max_lines=2)
+        block(d, x + 8, y + 175, lw - 16, s["deck"] + f" ({s['src']})",
+              SANS(9), leading=11, max_lines=2)
 
     # medium rows
     mw, mgap = 195, 5.25
@@ -558,7 +619,7 @@ def draw_page():
         for j in range(5):
             s = MED[row * 5 + j]
             x = M + j * (mw + mgap)
-            y = 402 + row * 168
+            y = 386 + row * 168
             d.rectangle([x, y, x + mw, y + 164], fill=PAPER, outline=LINE, width=1)
             ILLS[s["ill"]](d, x + 1, y + 1, mw - 2, 54)
             d.rectangle([x, y + 55, x + mw, y + 70], fill=NAVY)
@@ -566,54 +627,40 @@ def draw_page():
             d.text((x + 6, y + 73), f"{s['n']}  {s['loc']}", font=SANSB(8), fill=RED)
             block(d, x + 6, y + 85, mw - 12, s["head"], SERIFB(13),
                   leading=16, max_lines=2)
-            block(d, x + 6, y + 119, mw - 12, s["deck"], SANS(9),
-                  leading=12, max_lines=3)
+            block(d, x + 6, y + 119, mw - 12, s["deck"] + f" ({s['src']})",
+                  SANS(9), leading=11, max_lines=3)
 
-    # bottom: map + also list
-    y = 738
-    d.rectangle([M, y, M + 330, y + 192], fill=PAPER, outline=LINE, width=1)
-    d.text((M + 8, y + 6), "WHERE IT HAPPENED", font=SANSB(11), fill=INK)
-    draw_map(d, M + 1, y + 24, 328, 140)
-    block(d, M + 8, y + 168, 314,
+    # bottom: map + also list (taller in v3 — the timeline strip is gone)
+    y = 722
+    d.rectangle([M, y, M + 330, y + 216], fill=PAPER, outline=LINE, width=1)
+    d.text((M + 8, y + 6), "WHERE IT HAPPENED — STORIES 1–13", font=SANSB(11), fill=INK)
+    draw_map(d, M + 1, y + 24, 328, 160)
+    block(d, M + 8, y + 188, 314,
           "Each number is the story with that number on this page.",
           SANS(9), fill=GREY, leading=11, max_lines=2)
 
     ax = M + 340
-    d.rectangle([ax, y, W - M, y + 192], fill=PAPER, outline=LINE, width=1)
+    d.rectangle([ax, y, W - M, y + 216], fill=PAPER, outline=LINE, width=1)
     d.text((ax + 8, y + 6), "ALSO ON SATURDAY 21 NOVEMBER — 22 MORE STORIES",
            font=SANSB(11), fill=INK)
     d.line([(ax + 8, y + 24), (W - M - 8, y + 24)], fill=LINE, width=1)
     col2w = (W - M - ax - 16) / 2
-    for i, (n, txt) in enumerate(ALSO):
+    for i, (n, txt, src) in enumerate(ALSO):
         col = i // 11
         row = i % 11
         tx = ax + 8 + col * col2w
-        ty = y + 30 + row * 15
-        d.text((tx, ty), str(n), font=SANSB(10), fill=RED)
-        d.text((tx + 20, ty), txt, font=SANS(10), fill=INK)
+        ty = y + 30 + row * 16
+        line = txt + f" ({src})"
+        if SANS(9).getlength(line) > col2w - 24:
+            print(f"WARN also overflow #{n}: {SANS(9).getlength(line):.0f} > {col2w - 24:.0f}")
+        d.text((tx, ty), str(n), font=SANSB(9), fill=RED)
+        d.text((tx + 20, ty), line, font=SANS(9), fill=INK)
 
-    # timeline
-    y = 934
-    d.text((M, y), "THE DAY IN UTC", font=SANSB(10), fill=RED)
-    tw = (CW - 120) / 5
-    for i, (t, label) in enumerate(TIMELINE):
-        tx = M + 120 + i * tw
-        d.text((tx, y), t, font=SANSB(9), fill=INK)
-        block(d, tx, y + 11, tw - 8, label, SANS(8), fill=GREY,
-              leading=9, max_lines=2)
+    # date check (no timeline strip in v3)
+    date_check_box(d, M, 946, CW, 36)
 
-    # date check
-    y = 966
-    d.rectangle([M, y, W - M, y + 32], outline=RED, width=2)
-    block(d, M + 8, y + 4, CW - 16,
-          "DATE CHECK — Left out as Friday 20 November's news: the UK–EU deal, "
-          "Wall Street's fall into a correction, Cyclone Akvan's landfall, the "
-          "Russian barrage on Kyiv's bridges. Older still: Voyager 1's light-day "
-          "(18 Nov).",
-          SANS(10), fill=INK, leading=13, max_lines=2)
-
-    # footer
-    d.text((W // 2, 1002), "Every story here happened, or was first reported, on "
+    # footer — now true: every story does carry its source beside it
+    d.text((W // 2, 992), "Every story here happened, or was first reported, on "
            "Saturday 21 November 2026. Sources named beside each story · "
            "Original drawings",
            font=SANS(9), fill=GREY, anchor="ma")
@@ -630,4 +677,3 @@ if __name__ == "__main__":
     print("sha256:", hashlib.sha256(data).hexdigest())
     print("stories:", 3 + len(MED) + len(ALSO))
     print("regions:", sum(c for _, c, _ in REGIONS))
-    print("fields:", sum(c for _, c, _ in FIELDS))

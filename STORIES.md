@@ -1,9 +1,21 @@
-# Stories — Saturday 21 November 2026
+# Stories — Saturday 21 November 2026 (v3)
 
 Every story below happened, or was first reported, on Saturday 21 November
 2026. Sources are the outlets that reported it that day. Two date traps
 were checked and left out: the UK–EU deal (signed Friday 20 Nov) and the
 Starc 7/58 Ashes figures (21 Nov 2025, one year old).
+
+v3 changes vs v1: card 4 is Zelensky's Crimea-bridge warning (NBC), not
+the Kryvyi Rih strike (now ALSO #14); ALSO #35 is the Las Vegas
+Verstappen stewards call (Autosport), not Warsaw/Rutte; Rahul is 124* at
+tea, India 344 for 2 replying to 368 (v1's "136 at stumps, 486/4, lead
+118" was wrong); BepiColombo is NOT shown — it was not confirmed when
+drawn, so it is named in the DATE CHECK instead; every deck and ALSO
+line now carries its source in the text. No timeline strip in v3.
+
+Region mapping: Europe {4, 14, 15, 24}, Asia {8, 9, 18, 26, 27, 28, 29,
+30, 31, 32}, Middle East {1, 2, 5, 6, 19}, Africa {33}, Americas {3, 7,
+11, 12, 17, 20, 21, 22, 23, 25, 35}, Oceania {10, 13, 34}, Global {16}.
 
 ## Leads
 
@@ -21,9 +33,8 @@ Starc 7/58 Ashes figures (21 Nov 2025, one year old).
 
 ## Features (4–13)
 
-4. Kryvyi Rih double strike — 2 killed (boy 7, paramedic 20, killed by a
-   follow-up drone on rescuers), 42 hurt (27 serious, incl. 4 children),
-   23 apartment blocks + a hospital damaged. Source: Kyiv Independent.
+4. Kyiv: Zelensky warns the Crimea bridge "will not stay" and warns of
+   double-tap strikes, in an NBC interview. Source: NBC.
 5. Hormuz: IRGC claims it shot down a US MQ-9 Reaper, its 58th (announced
    Sat 03:03 GMT; US has not confirmed). Source: IRIB / Tasnim.
 6. Tehran: Araghchi — Iran open to a deal on 60% uranium (IAEA: 440.9 kg)
@@ -49,48 +60,39 @@ Starc 7/58 Ashes figures (21 Nov 2025, one year old).
     1:33.893 but a 5-place engine penalty → Verstappen on pole, Russell 2nd;
     Russell fastest in FP3 (1:34.041); Verstappen warned by stewards for an
     FP3 clash with Russell. Source: Reuters.
-13. Wellington: KL Rahul 136 (13th Test hundred, 12th as opener, first in
-    NZ; first Indian opener with Test hundreds in all 4 SENA countries;
-    5th Indian overall); India 239-1 at lunch, 486/4 at stumps, lead 118;
+13. Wellington: KL Rahul 124* at tea (13th Test hundred, 12th as opener,
+    first in NZ; first Indian opener with Test hundreds in all 4 SENA
+    countries; 5th Indian overall); India 344 for 2 at tea, replying to
     NZ 368 (Nicholls 175*); Padikkal 80, Gill 98, Pant 55*.
     Source: Reuters / ESPNcricinfo.
 
 ## Also (14–35)
 
-14. Kyiv: Zelensky warns of double-tap strikes (NBC interview).
-15. Copenhagen: Russian attaché expelled over a plot.
-16. Antalya: EU warns COP31 risks a "fossil summit".
-17. Antalya: Panama threatens to block the climate deal.
-18. Antalya: Indonesia's PLN signs clean-power deals.
-19. Yemen: Houthis threaten Jeddah and Red Sea ports.
-20. Washington: Vance — Iran strikes were Trump's decision.
-21. Washington: Lawmaker threatens SpaceX funding.
-22. Texas: Execution of a man of 70 takes 63 minutes.
+14. Kryvyi Rih: double strike kills 2 (boy 7, paramedic 20, killed by a
+    follow-up drone on rescuers), injures 42. Source: Kyiv Independent.
+15. Copenhagen: Russian attaché expelled over a plot. Source: Al Jazeera.
+16. Antalya: EU warns COP31 risks a "fossil summit". Source: AFP.
+17. Antalya: Panama threatens to block the climate deal. Source: Al Jazeera.
+18. Antalya: Indonesia's PLN signs clean-power deals. Source: Antara.
+19. Yemen: Houthis threaten Jeddah and Red Sea ports. Source: Al Jazeera.
+20. Washington: Vance — Iran strikes were Trump's decision. Source: Reuters.
+21. Washington: Lawmaker threatens SpaceX funding. Source: CNN.
+22. Texas: Execution of a man of 70 takes 63 minutes. Source: ABC.
 23. Los Angeles: Jury convicts the man who started the Palisades fire
-    (Rinderknecht, 30; retrial; fire killed 12).
-24. Turin: Medvedev meets Zverev in tonight's semi.
-25. Vancouver: Canada rests defence in the youth climate trial.
-26. Pyongyang: Kim tours factories after no Trump meeting.
-27. Sejong: Freight train derails, no one hurt.
-28. Taipei: Budget and a cash payout are passed.
-29. Bangkok: Six-point plan on arsenic in two rivers.
-30. New Delhi: Pakistani minister joins the SCO forum in India.
-31. Eastern India: Rain alerts as Akvan's remnants move inland.
-32. Myanmar: Rights groups urge sanctions after a court ruling.
-33. Port Louis: African rating agency talks to 15 states.
-34. Melbourne: Cummins keeps the Australian captaincy.
-35. Warsaw: Rutte flies in for NATO talks after Russian missiles and a
-    drone landed in Poland on Friday (2 Kh-101 + drone, no casualties;
-    Poland wants more NATO assets under Operation Eastern Sentry).
-
-## Timeline (UTC)
-
-- 00:09 — 6.7 quake hits Junín, Peru
-- 00:43 — Bitcoin below $59,000
-- 03:03 — Iran claims a US drone downed
-- 06:06 — Bitcoin $55,684, lowest since Sep 2024
-- 18:24 — BepiColombo fires thrusters for Mercury orbit (19:24 CET;
-  37-min burn, 8-year trip, ESA/JAXA, 2nd spacecraft to orbit Mercury)
+    (Rinderknecht, 30; retrial; fire killed 12). Source: ABC.
+24. Turin: Medvedev meets Zverev in tonight's semi. Source: AFP.
+25. Vancouver: Canada rests defence in the youth climate trial. Source: AFP.
+26. Pyongyang: Kim tours factories after no Trump meeting. Source: AFP.
+27. Sejong: Freight train derails, no one hurt. Source: Korea Herald.
+28. Taipei: Budget and a cash payout are passed. Source: Taipei Times.
+29. Bangkok: Six-point plan on arsenic in two rivers. Source: The Nation.
+30. New Delhi: Pakistani minister joins the SCO forum in India. Source: Dawn.
+31. Eastern India: Rain alerts as Akvan's remnants move inland. Source: ETV.
+32. Myanmar: Rights groups urge sanctions after a court ruling. Source: AP.
+33. Port Louis: African rating agency talks to 15 states. Source: Al Jazeera.
+34. Melbourne: Cummins keeps the Australian captaincy. Source: ABC.
+35. Las Vegas: Verstappen sent to stewards after contact (FP3 clash with
+    Russell). Source: Autosport.
 
 ## Date check (left out)
 
@@ -99,4 +101,11 @@ Starc 7/58 Ashes figures (21 Nov 2025, one year old).
 - Wall Street's correction — Friday 20 Nov
 - Cyclone Akvan's landfall — Friday 20 Nov
 - Kyiv bridges barrage — Friday 20 Nov
+- Missile that landed in Poland — Friday 20 Nov
 - Voyager 1's light-day — 18 Nov
+
+## Not confirmed when drawn, so not shown
+
+- BepiColombo in Mercury orbit (thruster burn reported 18:24 UTC, but
+  orbital insertion not confirmed when drawn)
+- A final COP31 text
