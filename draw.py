@@ -9,6 +9,15 @@ was drawn: COP31 overtime (AP), three Houthi missiles over Riyadh
 the Davao emergency landing (CAAP/AP), the Australia-China AI dialogue
 (AAP), Bitcoin's slide (CoinGecko), Las Vegas qualifying (Reuters),
 Rahul's 136 (Reuters/ESPNcricinfo) and the rest.
+
+v2 (same 35 stories, execution only): COP31, uranium, AI-talks and
+China-Japan illustrations redrawn as literal scenes; a HOW SURE legend
+marks each card CONFIRMED / CLAIM / FORECAST (dots in the kicker rows
+and ALSO lines); each card names its source in the kicker bar; the
+DATE CHECK now lists what is not yet as well as what was left out;
+the footer names the agencies. Winner study: the 19 Nov top 3 all
+share a UTC timeline strip (v1 already has one), a DATE CHECK box,
+per-story status+source tags, a sources line and literal scenes.
 """
 import hashlib
 from PIL import Image, ImageDraw, ImageFont
@@ -228,20 +237,27 @@ def _skyline(d, x, y, w, h, base, color):
 
 
 def ill_cop31(d, x, y, w, h):
+    # v2: a literal negotiation hall — delegates at a long table under a
+    # wall clock near midnight (the summit in overtime), not icons.
     d.rectangle([x, y, x + w, y + h], fill=(213, 232, 212))
-    cx, cy, r = x + w * 0.30, y + h * 0.52, h * 0.30
-    d.ellipse([cx - r, cy - r, cx + r, cy + r], fill=(70, 130, 200), outline=NAVY, width=2)
-    d.ellipse([cx - r * 0.45, cy - r * 0.55, cx + r * 0.25, cy - r * 0.05], fill=(90, 180, 90))
-    d.ellipse([cx - r * 0.30, cy + r * 0.15, cx + r * 0.45, cy + r * 0.55], fill=(90, 180, 90))
-    tx = x + w * 0.60
-    d.rounded_rectangle([tx, y + h * 0.16, tx + 13, y + h * 0.70], radius=6,
-                        fill=(255, 255, 255), outline=INK, width=2)
-    d.rectangle([tx + 4, y + h * 0.30, tx + 9, y + h * 0.70], fill=RED)
-    d.ellipse([tx - 4, y + h * 0.64, tx + 17, y + h * 0.86], fill=RED, outline=INK, width=2)
-    kx, ky, kr = x + w * 0.86, y + h * 0.50, h * 0.26
+    # wall clock (overtime: hands near midnight)
+    kx, ky, kr = x + w * 0.88, y + h * 0.24, h * 0.20
     d.ellipse([kx - kr, ky - kr, kx + kr, ky + kr], fill=(255, 255, 255), outline=INK, width=2)
-    d.line([kx, ky, kx, ky - kr * 0.7], fill=INK, width=2)
-    d.line([kx, ky, kx + kr * 0.55, ky + kr * 0.25], fill=INK, width=2)
+    d.line([kx, ky, kx - kr * 0.45, ky - kr * 0.55], fill=INK, width=2)
+    d.line([kx, ky, kx + kr * 0.10, ky - kr * 0.75], fill=INK, width=2)
+    # four delegates behind the table
+    suits = [(30, 58, 95), (90, 90, 90), (15, 118, 110), (140, 20, 20)]
+    for i, col in enumerate(suits):
+        cx = x + w * (0.12 + i * 0.20)
+        d.ellipse([cx - 8, y + h * 0.28, cx + 8, y + h * 0.46], fill=(235, 200, 170), outline=INK, width=1)
+        d.rounded_rectangle([cx - 13, y + h * 0.46, cx + 13, y + h * 0.62], radius=5, fill=col)
+    # long negotiation table (covers the delegates' lower bodies)
+    d.rectangle([x + 8, y + h * 0.58, x + w - 8, y + h * 0.92], fill=(120, 80, 50))
+    d.rectangle([x + 8, y + h * 0.58, x + w - 8, y + h * 0.64], fill=(150, 105, 65))
+    # draft papers on the table
+    for i in range(3):
+        px = x + w * (0.14 + i * 0.28)
+        d.rectangle([px, y + h * 0.68, px + 26, y + h * 0.86], fill=(255, 255, 255), outline=INK, width=1)
 
 
 def ill_riyadh(d, x, y, w, h):
@@ -316,13 +332,20 @@ def ill_hormuz(d, x, y, w, h):
 
 
 def ill_uranium(d, x, y, w, h):
+    # v2: a literal centrifuge hall — rows of enrichment centrifuges
+    # with a connecting pipe, not a generic atom symbol.
     d.rectangle([x, y, x + w, y + h], fill=(38, 38, 52))
-    cx, cy = x + w * 0.5, y + h * 0.52
-    for a in (0, 60, 120):
-        d.arc([cx - w * 0.30, cy - h * 0.30, cx + w * 0.30, cy + h * 0.30],
-              a, a + 300, fill=(255, 200, 60), width=2)
-    d.ellipse([cx - 6, cy - 6, cx + 6, cy + 6], fill=(255, 200, 60))
     d.text((x + 6, y + 4), "60%", font=SANSB(13), fill=(255, 255, 255))
+    # connecting pipe along the top
+    d.line([x + w * 0.10, y + h * 0.34, x + w * 0.90, y + h * 0.34], fill=(150, 150, 170), width=2)
+    # floor line
+    d.line([x + 4, y + h * 0.86, x + w - 4, y + h * 0.86], fill=(120, 120, 140), width=1)
+    # five centrifuge cylinders
+    for i in range(5):
+        cx = x + w * (0.14 + i * 0.18)
+        d.rounded_rectangle([cx - 9, y + h * 0.34, cx + 9, y + h * 0.86], radius=4,
+                            fill=(180, 180, 190), outline=(100, 100, 110), width=1)
+        d.rectangle([cx - 9, y + h * 0.50, cx + 9, y + h * 0.58], fill=(255, 200, 60))
 
 
 def ill_datacentre(d, x, y, w, h):
@@ -338,20 +361,30 @@ def ill_datacentre(d, x, y, w, h):
 
 
 def ill_flags(d, x, y, w, h):
+    # v2: a literal press-conference scene — the two flags on poles
+    # flanking a podium with microphones, not two flat flags.
     d.rectangle([x, y, x + w, y + h], fill=(232, 228, 215))
-    # China flag
-    fx, fy, fw, fh = x + w * 0.08, y + h * 0.20, w * 0.38, h * 0.42
+    # China flag on a pole (left)
+    fx, fy, fw, fh = x + w * 0.06, y + h * 0.14, w * 0.30, h * 0.34
+    d.line([fx + fw / 2, fy, fx + fw / 2, y + h * 0.62], fill=INK, width=2)
     d.rectangle([fx, fy, fx + fw, fy + fh], fill=(222, 41, 16))
-    d.text((fx + 5, fy + 3), "★", font=SANSB(16), fill=(255, 222, 0))
-    # Japan flag
-    jx, jy = x + w * 0.54, y + h * 0.20
+    d.text((fx + 4, fy + 2), "★", font=SANSB(13), fill=(255, 222, 0))
+    # Japan flag on a pole (right)
+    jx, jy = x + w * 0.64, y + h * 0.14
+    d.line([jx + fw / 2, jy, jx + fw / 2, y + h * 0.62], fill=INK, width=2)
     d.rectangle([jx, jy, jx + fw, jy + fh], fill=(255, 255, 255), outline=INK, width=1)
     d.ellipse([jx + fw * 0.32, jy + fh * 0.22, jx + fw * 0.68, jy + fh * 0.78], fill=(188, 0, 45))
-    # speech bubble
-    bx, by = x + w * 0.30, y + h * 0.68
-    d.rounded_rectangle([bx, by, bx + w * 0.44, by + h * 0.24], radius=6,
-                        fill=(255, 255, 255), outline=INK, width=1)
-    d.text((bx + 5, by + 3), "“correct”", font=SANSB(10), fill=INK)
+    # the rebuke, small, above the podium
+    d.text((x + w * 0.50, y + h * 0.30), "“correct”", font=SANSB(10), fill=INK, anchor="mm")
+    # podium with microphones
+    px0 = x + w * 0.38
+    d.polygon([(px0, y + h * 0.62), (px0 + w * 0.24, y + h * 0.62),
+               (px0 + w * 0.20, y + h * 0.92), (px0 + w * 0.04, y + h * 0.92)],
+              fill=(60, 60, 80))
+    d.line([px0 + w * 0.08, y + h * 0.62, px0 + w * 0.08, y + h * 0.44], fill=INK, width=2)
+    d.line([px0 + w * 0.16, y + h * 0.62, px0 + w * 0.16, y + h * 0.44], fill=INK, width=2)
+    d.ellipse([px0 + w * 0.08 - 3, y + h * 0.44 - 3, px0 + w * 0.08 + 3, y + h * 0.44 + 3], fill=INK)
+    d.ellipse([px0 + w * 0.16 - 3, y + h * 0.44 - 3, px0 + w * 0.16 + 3, y + h * 0.44 + 3], fill=INK)
 
 
 def ill_plane(d, x, y, w, h):
@@ -370,18 +403,25 @@ def ill_plane(d, x, y, w, h):
 
 
 def ill_aitalks(d, x, y, w, h):
+    # v2: a literal bilateral meeting — two delegates at a table with
+    # their flags and a laptop, not two flat flags and a badge.
     d.rectangle([x, y, x + w, y + h], fill=(220, 232, 220))
-    # two small flags
-    for i, (col, star) in enumerate([((0, 47, 108), "★"), ((222, 41, 16), "★")]):
-        fx = x + w * (0.10 + i * 0.46)
-        d.rectangle([fx, y + h * 0.16, fx + w * 0.36, y + h * 0.52], fill=col)
-        d.text((fx + 4, y + h * 0.20), star, font=SANSB(13), fill=(255, 255, 255))
-    # AI badge
-    bx0, by0 = x + w * 0.38, y + h * 0.60
-    d.rounded_rectangle([bx0, by0, bx0 + w * 0.24, by0 + h * 0.28], radius=4,
-                        fill=(255, 255, 255), outline=INK, width=1)
-    d.text((bx0 + w * 0.12, by0 + h * 0.14), "AI", font=SANSB(10), fill=INK,
-           anchor="mm")
+    # two delegates behind the table
+    for cx, col in [(x + w * 0.20, (0, 47, 108)), (x + w * 0.80, (222, 41, 16))]:
+        d.ellipse([cx - 7, y + h * 0.18, cx + 7, y + h * 0.42], fill=(235, 200, 170), outline=INK, width=1)
+        d.rounded_rectangle([cx - 11, y + h * 0.42, cx + 11, y + h * 0.58], radius=4, fill=col)
+    # meeting table
+    d.rectangle([x + 6, y + h * 0.58, x + w - 6, y + h * 0.90], fill=(120, 80, 50))
+    d.rectangle([x + 6, y + h * 0.58, x + w - 6, y + h * 0.64], fill=(150, 105, 65))
+    # laptop in the centre, screen showing AI
+    lx0, ly0 = x + w * 0.40, y + h * 0.30
+    d.rectangle([lx0, ly0, lx0 + w * 0.20, ly0 + h * 0.28], fill=(30, 30, 40), outline=INK, width=1)
+    d.text((lx0 + w * 0.10, ly0 + h * 0.14), "AI", font=SANSB(9), fill=(120, 220, 120), anchor="mm")
+    d.rectangle([lx0 - 4, ly0 + h * 0.28, lx0 + w * 0.20 + 4, ly0 + h * 0.32], fill=(90, 90, 100))
+    # small table flags flanking the laptop
+    for fx, col in [(x + w * 0.28, (0, 47, 108)), (x + w * 0.68, (222, 41, 16))]:
+        d.line([fx, y + h * 0.58, fx, y + h * 0.78], fill=INK, width=1)
+        d.rectangle([fx, y + h * 0.58, fx + 12, y + h * 0.70], fill=col)
 
 
 def ill_bitcoin(d, x, y, w, h):
@@ -438,6 +478,47 @@ ILLS = {
     "aitalks": ill_aitalks, "bitcoin": ill_bitcoin, "f1": ill_f1,
     "cricket": ill_cricket,
 }
+
+# ---------------------------------------------------------------- how sure
+# v2: every pictured card carries a status dot in its kicker row (right
+# end) and every ALSO line carries one before its text, explained by the
+# legend under the map. CONFIRMED = it happened / is on the record.
+# CLAIM = attributed, not yet verified (#5 Hormuz: IRGC claims, US has
+# not confirmed; #6 uranium: Araghchi's stated position; #14, #16, #17,
+# #19, #20, #21, #32 are warnings, threats or assertions). FORECAST =
+# scheduled / expected (#24 Medvedev semi tonight; #31 rain alerts).
+HOW_SURE = {
+    1: "CONFIRMED", 2: "CONFIRMED", 3: "CONFIRMED", 4: "CONFIRMED",
+    5: "CLAIM", 6: "CLAIM", 7: "CONFIRMED", 8: "CONFIRMED",
+    9: "CONFIRMED", 10: "CONFIRMED", 11: "CONFIRMED", 12: "CONFIRMED",
+    13: "CONFIRMED", 14: "CLAIM", 15: "CONFIRMED", 16: "CLAIM",
+    17: "CLAIM", 18: "CONFIRMED", 19: "CLAIM", 20: "CLAIM",
+    21: "CLAIM", 22: "CONFIRMED", 23: "CONFIRMED", 24: "FORECAST",
+    25: "CONFIRMED", 26: "CONFIRMED", 27: "CONFIRMED", 28: "CONFIRMED",
+    29: "CONFIRMED", 30: "CONFIRMED", 31: "FORECAST", 32: "CLAIM",
+    33: "CONFIRMED", 34: "CONFIRMED", 35: "CONFIRMED",
+}
+HOW_SURE_COL = {
+    "CONFIRMED": (34, 139, 80),
+    "CLAIM": (200, 130, 0),
+    "FORECAST": (30, 80, 160),
+}
+
+
+# v2 (winner study): short source named in each card's kicker bar,
+# beside the HOW SURE dot — the winning broadsheets tag every card
+# with its status AND its source.
+SRC = {
+    1: "AP", 2: "Reuters", 3: "USGS", 4: "Kyiv Ind.", 5: "IRIB",
+    6: "IRNA", 7: "Reuters", 8: "Reuters", 9: "CAAP", 10: "AAP",
+    11: "CoinGecko", 12: "Reuters", 13: "Reuters",
+}
+
+
+def sure_dot(d, cx, cy, status, r=5, outline=(255, 255, 255)):
+    """HOW SURE marker: coloured dot, centre (cx, cy)."""
+    d.ellipse([cx - r, cy - r, cx + r, cy + r],
+              fill=HOW_SURE_COL[status], outline=outline, width=1)
 
 # ------------------------------------------------------------ world map
 CONTINENTS = [
@@ -546,6 +627,8 @@ def draw_page():
         ILLS[s["ill"]](d, x + 1, y + 1, lw - 2, 92)
         d.rectangle([x, y + 93, x + lw, y + 111], fill=RED)
         d.text((x + 8, y + 96), s["kicker"], font=SANSB(11), fill=(255, 255, 255))
+        d.text((x + lw - 24, y + 96), SRC[s["n"]], font=SANS(9), fill=(255, 255, 255), anchor="ra")
+        sure_dot(d, x + lw - 12, y + 102, HOW_SURE[s["n"]], r=5)
         d.text((x + 8, y + 115), f"{s['n']}  {s['loc']}", font=SANSB(9), fill=RED)
         block(d, x + 8, y + 129, lw - 16, s["head"], SERIFB(19),
               leading=22, max_lines=2)
@@ -563,6 +646,8 @@ def draw_page():
             ILLS[s["ill"]](d, x + 1, y + 1, mw - 2, 54)
             d.rectangle([x, y + 55, x + mw, y + 70], fill=NAVY)
             d.text((x + 6, y + 57), s["kicker"], font=SANSB(8), fill=(255, 255, 255))
+            d.text((x + mw - 18, y + 57), SRC[s["n"]], font=SANS(7), fill=(255, 255, 255), anchor="ra")
+            sure_dot(d, x + mw - 10, y + 62, HOW_SURE[s["n"]], r=4)
             d.text((x + 6, y + 73), f"{s['n']}  {s['loc']}", font=SANSB(8), fill=RED)
             block(d, x + 6, y + 85, mw - 12, s["head"], SERIFB(13),
                   leading=16, max_lines=2)
@@ -573,10 +658,27 @@ def draw_page():
     y = 738
     d.rectangle([M, y, M + 330, y + 192], fill=PAPER, outline=LINE, width=1)
     d.text((M + 8, y + 6), "WHERE IT HAPPENED", font=SANSB(11), fill=INK)
-    draw_map(d, M + 1, y + 24, 328, 140)
-    block(d, M + 8, y + 168, 314,
+    draw_map(d, M + 1, y + 24, 328, 128)
+    block(d, M + 8, y + 156, 314,
           "Each number is the story with that number on this page.",
-          SANS(9), fill=GREY, leading=11, max_lines=2)
+          SANS(9), fill=GREY, leading=11, max_lines=1)
+    # HOW SURE legend (v2): two lines under the map caption; the dots
+    # match the status dot in each lead/medium kicker row and ALSO line.
+    ly = y + 170
+    d.text((M + 8, ly), "HOW SURE", font=SANSB(9), fill=RED)
+    hx = M + 8 + SANSB(9).getlength("HOW SURE ")
+    d.ellipse([hx, ly + 1, hx + 8, ly + 9], fill=HOW_SURE_COL["CONFIRMED"],
+              outline=INK, width=1)
+    d.text((hx + 12, ly), "CONFIRMED — on the record", font=SANS(9), fill=INK)
+    ly += 12
+    hx = M + 8
+    d.ellipse([hx, ly + 1, hx + 8, ly + 9], fill=HOW_SURE_COL["CLAIM"],
+              outline=INK, width=1)
+    d.text((hx + 12, ly), "CLAIM — attributed", font=SANS(9), fill=INK)
+    hx += 12 + SANS(9).getlength("CLAIM — attributed ")
+    d.ellipse([hx, ly + 1, hx + 8, ly + 9], fill=HOW_SURE_COL["FORECAST"],
+              outline=INK, width=1)
+    d.text((hx + 12, ly), "FORECAST — scheduled", font=SANS(9), fill=INK)
 
     ax = M + 340
     d.rectangle([ax, y, W - M, y + 192], fill=PAPER, outline=LINE, width=1)
@@ -590,10 +692,12 @@ def draw_page():
         tx = ax + 8 + col * col2w
         ty = y + 30 + row * 15
         d.text((tx, ty), str(n), font=SANSB(10), fill=RED)
-        d.text((tx + 20, ty), txt, font=SANS(10), fill=INK)
+        sure_dot(d, tx + 17, ty + 5, HOW_SURE[n], r=3, outline=INK)
+        d.text((tx + 26, ty), txt, font=SANS(10), fill=INK)
 
-    # timeline
+    # timeline (v1 already has it; v2 marks it as a distinct strip)
     y = 934
+    d.line([(M, y - 2), (W - M, y - 2)], fill=LINE, width=1)
     d.text((M, y), "THE DAY IN UTC", font=SANSB(10), fill=RED)
     tw = (CW - 120) / 5
     for i, (t, label) in enumerate(TIMELINE):
@@ -602,20 +706,21 @@ def draw_page():
         block(d, tx, y + 11, tw - 8, label, SANS(8), fill=GREY,
               leading=9, max_lines=2)
 
-    # date check
+    # date check (v2: winners list what was left out AND what is not yet)
     y = 966
     d.rectangle([M, y, W - M, y + 32], outline=RED, width=2)
     block(d, M + 8, y + 4, CW - 16,
-          "DATE CHECK — Left out as Friday 20 November's news: the UK–EU deal, "
-          "Wall Street's fall into a correction, Cyclone Akvan's landfall, the "
-          "Russian barrage on Kyiv's bridges. Older still: Voyager 1's light-day "
-          "(18 Nov).",
+          "DATE CHECK — Left out (20 Nov news): UK–EU deal, Wall Street "
+          "correction, Akvan landfall, Kyiv bridges barrage; Voyager 1 "
+          "(18 Nov). Not yet: the COP31 deal; Medvedev–Zverev semi tonight.",
           SANS(10), fill=INK, leading=13, max_lines=2)
 
-    # footer
-    d.text((W // 2, 1002), "Every story here happened, or was first reported, on "
-           "Saturday 21 November 2026. Sources named beside each story · "
-           "Original drawings",
+    # footer (v2: winners name the agencies at the bottom)
+    d.text((W // 2, 1000), "Every story here happened, or was first reported, on "
+           "Saturday 21 November 2026.",
+           font=SANS(9), fill=GREY, anchor="ma")
+    d.text((W // 2, 1012), "Sources: AP · Reuters · USGS · IGP · Kyiv Independent · "
+           "IRIB · IRNA · AAP · CAAP · CoinGecko · ESPNcricinfo · Original drawings",
            font=SANS(9), fill=GREY, anchor="ma")
 
     return img
