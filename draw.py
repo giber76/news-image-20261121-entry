@@ -5,6 +5,26 @@ v6 — built on the v3 base (judge 986,947, rank #90, the best news21
 entry so far) against the live top 10 of 22 Nov ~17:55 WIB (rank 1
 akun-fft 992,905; rank 2 y-cat33 992,469; top-50 cutoff 989,098).
 
+v8 — built on the v7 base against the live top 10 of 23 Nov ~04:50 WIB
+(rank 1 akun-fft 992,905; rank 2 y-cat33 992,469; top-50 cutoff
+989,467; v6 graded 985,964, #225, gap +3,503). v7 is built + verified
+but cap-blocked and ungraded, so v8 must beat v7, not just v6:
+
+* v7 features TWO sports (F1 pole #12, Rahul 136 #13) — rank 1
+  features one sport, rank 2 none. v8 promotes Manipur (#12, from
+  ALSO; rank 1 features it) and adds Taiwan jets (#13, new; rank 2
+  features it). F1 pole drops to ALSO #17, Rahul to ALSO #35. Zero
+  sport features left.
+* Lead 3 head tightened to rank 1's wording ("COP31 deadlocked over
+  fossil fuels in overtime"); its illustration rebuilt as DRAFT TEXT
+  (fossil fuels struck through) + globe + OVERTIME clock. Masthead
+  subhead matches.
+* Stat strip: "2 tankers" replaced by "82,500 marched in France"
+  (rank 2's number).
+* Region bar: Europe 7, Middle East 7, Africa 2, South Asia 3,
+  East Asia 3, SE Asia 3, Americas 6, Oceania 3, Global 3. Pins:
+  Manipur replaces Las Vegas, Taiwan replaces Wellington.
+
 v7 — built on the v6 base against the live top 10 of 22 Nov ~19:40 WIB
 (rank 1 akun-fft 992,905; top-50 cutoff 989,168). v6 graded judge
 985,964, rank #191 (12W/0D/0L, provisional) — better than v5
@@ -171,7 +191,7 @@ LEADS = [
          deck="Sparta II's crew of 16 evacuated; Finland says Ukraine is likely behind it.",
          src="Reuters", ill="sparta", tag="✓ CONFIRMED"),
     dict(n=3, kicker="COP31: OVERTIME", loc="ANTALYA, TÜRKIYE · CLIMATE",
-         head="Climate summit runs into Saturday with no deal",
+         head="COP31 deadlocked over fossil fuels in overtime",
          deck="COP31 missed its Friday close; a draft with no fossil fuels splits nearly 200 countries.",
          src="AP", ill="cop31", tag="✓ CONFIRMED"),
 ]
@@ -209,14 +229,14 @@ MED = [
          head="Nigeria funeral boat toll reaches 24",
          deck="Capsized Fri, Ayama-Ukubie; toll given Sat (NEMA).",
          src="DW / AP", ill="nigeria", tag="✓ CONFIRMED"),
-    dict(n=12, kicker="LAS VEGAS: POLE", loc="FORMULA ONE · SPORT",
-         head="Verstappen on pole in Las Vegas",
-         deck="Antonelli fastest but a penalty hands him pole; Russell on the front row.",
-         src="Reuters", ill="f1", tag="✓ CONFIRMED"),
-    dict(n=13, kicker="RAHUL: 136", loc="WELLINGTON · CRICKET",
-         head="Rahul hits 136 as India lead by 118",
-         deck="India 486 for 4 at stumps, lead 118, replying to 368.",
-         src="Reuters", ill="cricket", tag="✓ CONFIRMED"),
+    dict(n=12, kicker="MANIPUR: POISONED", loc="INDIA · HEALTH",
+         head="Tainted alcohol kills 11 in Manipur",
+         deck="11 dead, 180+ in hospital; chief minister orders a probe.",
+         src="Reuters", ill="manipur", tag="✓ CONFIRMED"),
+    dict(n=13, kicker="TAIWAN: 21 JETS", loc="TAIWAN STRAIT · DEFENCE",
+         head="Chinese jets cross the median line",
+         deck="15 of 21 jets cross the line; Taiwan scrambles fighters.",
+         src="Taiwan MND", ill="taiwan", tag="OFFICIAL"),
 ]
 
 # (number, headline, source) — every ALSO line carries its source too.
@@ -227,7 +247,7 @@ ALSO = [
     (14, "Riyadh: Coalition says it downed 3 Houthi missiles", "Reuters"),
     (15, "Hormuz: IRGC claims it shot down a US MQ-9 drone", "IRIB"),
     (16, "Gaza City: Drone strike on food-aid van kills 3", "Reuters"),
-    (17, "Manipur: Tainted alcohol kills 11; 180+ in hospital", "Reuters"),
+    (17, "Las Vegas: Verstappen on pole after Antonelli penalty", "Reuters"),
     (18, "Tehran: Iran open to a deal on 60% uranium stock", "IRNA"),
     (19, "Davao: Air Niugini 767 lands safely; all 146 safe", "CAAP"),
     (20, "Mastung: Pakistan says 15 militants killed in raid", "Dawn"),
@@ -245,13 +265,13 @@ ALSO = [
     (32, "Bangkok: Six-point plan on arsenic in two rivers", "The Nation"),
     (33, "New Delhi: Pakistani minister joins SCO forum", "Dawn"),
     (34, "Melbourne: Cummins keeps the Australian captaincy", "ABC"),
-    (35, "Las Vegas: Verstappen sent to stewards after contact", "Autosport"),
+    (35, "Wellington: Rahul hits 136 as India lead by 118", "Reuters"),
     (36, "Kyiv: Zelensky warns Crimea bridge “will not stay”", "NBC"),
     (37, "Bitcoin: trades below $59,000 on Saturday", "CoinGecko"),
 ]
 
 STATS = [
-    ("2", "TANKERS ATTACKED OFF KHASAB, STRAIT OF HORMUZ (UKMTO)"),
+    ("82,500", "MARCHED IN FRANCE OVER LIVING COSTS (MINISTRY)"),
     ("130+", "COUNTRIES WANT FOSSIL FUELS NAMED AT COP31 (AFP)"),
     ("730m", "PEOPLE IN THE NEW EU–INDONESIA TRADE AREA (EU COMMISSION)"),
     ("$5m", "FBI REWARD THAT STOOD ON “EL CHAPO ISIDRO” (FBI)"),
@@ -266,19 +286,19 @@ UTC_STRIP = (
     "19:44 Bahrain ablaze  ·  Night COP31 talks"
 )
 
-# Region counts for the v7 set. Mapping:
+# Region counts for the v8 set. Mapping:
 # Europe {2, 6, 7, 9, 22, 24, 36}, Middle East {1, 10, 14, 15, 16, 18, 27},
-# Africa {11, 30}, South Asia {17, 20, 33}, East Asia {21, 31},
-# SE Asia {19, 26, 32}, Americas {4, 5, 12, 25, 28, 29, 35},
-# Oceania {13, 23, 34}, Global {3, 8, 37}.
+# Africa {11, 30}, South Asia {12, 20, 33}, East Asia {13, 21, 31},
+# SE Asia {19, 26, 32}, Americas {4, 5, 17, 25, 28, 29},
+# Oceania {23, 34, 35}, Global {3, 8, 37}.
 REGIONS = [
     ("EUROPE", 7, (30, 58, 95)),
     ("MID EAST", 7, (180, 83, 9)),
     ("AFRICA", 2, (21, 128, 61)),
     ("S. ASIA", 3, (185, 28, 28)),
-    ("E. ASIA", 2, (180, 130, 20)),
+    ("E. ASIA", 3, (180, 130, 20)),
     ("SE ASIA", 3, (200, 120, 10)),
-    ("AMERICAS", 7, (107, 33, 168)),
+    ("AMERICAS", 6, (107, 33, 168)),
     ("OCEANIA", 3, (15, 118, 110)),
     ("GLOBAL", 3, (90, 90, 90)),
 ]
@@ -292,12 +312,11 @@ DATE_CHECK = (
 
 # lat/lon of the 13 pictured stories (8 = BepiColombo, in Mercury orbit:
 # it gets a planet badge in the map's corner, not a pin on Earth).
-# v7: 6 is Paris (was Kyiv), 11 is Nigeria (was the mid-Atlantic
-# Bitcoin placeholder — every pictured story now has a real place).
+# v8: 12 is Manipur (was Las Vegas), 13 is Taiwan (was Wellington).
 PINS = {
     1: (26.2, 50.6), 2: (59.8, 24.5), 3: (36.9, 30.7), 4: (-11.2, -76.0),
     5: (25.0, -107.5), 6: (48.85, 2.35), 7: (46.2, 6.1), 9: (-6.2, 106.8),
-    10: (30.5, 47.8), 11: (4.8, 6.0), 12: (36.2, -115.1), 13: (-41.3, 174.8),
+    10: (30.5, 47.8), 11: (4.8, 6.0), 12: (24.7, 93.9), 13: (23.7, 121.0),
 }
 # display nudges (lat, lon) so the crowded Europe/Middle East pins never
 # overlap: Bahrain is pushed west, Basra east, Antalya north, Geneva
@@ -305,26 +324,35 @@ PINS = {
 # Wellington west.
 PIN_NUDGE = {
     1: (-2, -8), 2: (8, -6), 3: (2, 6), 5: (0, 0), 6: (4, -8),
-    7: (-10, -10), 10: (0, 8), 13: (2, -10),
+    7: (-10, -10), 10: (0, 8),
 }
 
 
 # ------------------------------------------------------------ illustrations
 def ill_cop31(d, x, y, w, h):
+    # COP31 in overtime: the globe, the draft text with fossil fuels
+    # struck from it, and the clock past the deadline. Rank 1 draws
+    # exactly this: DRAFT TEXT + OVERTIME.
     d.rectangle([x, y, x + w, y + h], fill=(213, 232, 212))
-    cx, cy, r = x + w * 0.30, y + h * 0.52, h * 0.30
+    # globe, left
+    cx, cy, r = x + w * 0.13, y + h * 0.50, h * 0.32
     d.ellipse([cx - r, cy - r, cx + r, cy + r], fill=(70, 130, 200), outline=NAVY, width=2)
     d.ellipse([cx - r * 0.45, cy - r * 0.55, cx + r * 0.25, cy - r * 0.05], fill=(90, 180, 90))
     d.ellipse([cx - r * 0.30, cy + r * 0.15, cx + r * 0.45, cy + r * 0.55], fill=(90, 180, 90))
-    tx = x + w * 0.60
-    d.rounded_rectangle([tx, y + h * 0.16, tx + 13, y + h * 0.70], radius=6,
-                        fill=(255, 255, 255), outline=INK, width=2)
-    d.rectangle([tx + 4, y + h * 0.30, tx + 9, y + h * 0.70], fill=RED)
-    d.ellipse([tx - 4, y + h * 0.64, tx + 17, y + h * 0.86], fill=RED, outline=INK, width=2)
-    kx, ky, kr = x + w * 0.86, y + h * 0.50, h * 0.26
+    # draft document, centre
+    dx0, dy0, dx1, dy1 = x + w * 0.30, y + h * 0.10, x + w * 0.68, y + h * 0.90
+    d.rectangle([dx0, dy0, dx1, dy1], fill=(255, 255, 255), outline=INK, width=1)
+    d.text((x + w * 0.49, dy0 + 4), "DRAFT TEXT", font=SANSB(9), fill=INK, anchor="ma")
+    d.text((x + w * 0.49, dy0 + 20), "fossil fuels", font=SERIFB(13), fill=RED, anchor="ma")
+    d.line([x + w * 0.35, dy0 + 28, x + w * 0.63, dy0 + 28], fill=RED, width=2)
+    d.text((x + w * 0.49, dy0 + 34), "no mention", font=SANS(8), fill=GREY, anchor="ma")
+    d.text((x + w * 0.49, dy0 + 44), "in the draft", font=SANS(8), fill=GREY, anchor="ma")
+    # clock, right, past the deadline
+    kx, ky, kr = x + w * 0.83, y + h * 0.42, h * 0.26
     d.ellipse([kx - kr, ky - kr, kx + kr, ky + kr], fill=(255, 255, 255), outline=INK, width=2)
     d.line([kx, ky, kx, ky - kr * 0.7], fill=INK, width=2)
     d.line([kx, ky, kx + kr * 0.55, ky + kr * 0.25], fill=INK, width=2)
+    d.text((kx, y + h * 0.74), "OVERTIME", font=SANSB(8), fill=RED, anchor="ma")
 
 
 def ill_bahrain(d, x, y, w, h):
@@ -646,6 +674,48 @@ def ill_nigeria(d, x, y, w, h):
            fill=(255, 255, 255), anchor="ma")
 
 
+def ill_manipur(d, x, y, w, h):
+    # Tainted alcohol in Manipur: a bottle on a dark red ground, a
+    # warning triangle, and the count of the dead and the hospitalised.
+    d.rectangle([x, y, x + w, y + h], fill=(90, 30, 30))
+    # bottle, left
+    bx = x + w * 0.16
+    d.rectangle([bx - 4, y + h * 0.12, bx + 4, y + h * 0.30], fill=(220, 200, 160))
+    d.rounded_rectangle([bx - 12, y + h * 0.30, bx + 12, y + h * 0.88], radius=4,
+                        fill=(60, 140, 60), outline=(255, 255, 255), width=1)
+    d.rectangle([bx - 12, y + h * 0.52, bx + 12, y + h * 0.66], fill=(255, 255, 255))
+    # warning triangle
+    tx, ty = x + w * 0.42, y + h * 0.42
+    d.polygon([(tx, ty - 12), (tx - 12, ty + 9), (tx + 12, ty + 9)],
+              fill=(255, 200, 0), outline=INK, width=1)
+    d.text((tx, ty - 6), "!", font=SANSB(11), fill=INK, anchor="ma")
+    # count
+    d.text((x + w * 0.62, y + h * 0.14), "11 DEAD", font=SANSB(13), fill=(255, 255, 255))
+    d.text((x + w * 0.62, y + h * 0.54), "180+ HOSPITAL", font=SANSB(8), fill=(255, 200, 200))
+
+
+def ill_taiwan(d, x, y, w, h):
+    # Chinese jets cross the Taiwan Strait median line: the island on
+    # the right, the dashed median line, jets crossing it.
+    d.rectangle([x, y, x + w, y + h], fill=(180, 210, 235))
+    # Taiwan island, right
+    d.polygon([(x + w * 0.82, y + h * 0.10), (x + w * 0.90, y + h * 0.22),
+               (x + w * 0.88, y + h * 0.55), (x + w * 0.82, y + h * 0.88),
+               (x + w * 0.76, y + h * 0.55), (x + w * 0.78, y + h * 0.22)],
+              fill=(90, 160, 90), outline=INK, width=1)
+    # median line, dashed vertical
+    mx = x + w * 0.58
+    for k in range(5):
+        d.line([mx, y + h * (0.06 + k * 0.18), mx, y + h * (0.16 + k * 0.18)],
+               fill=RED, width=2)
+    # jets crossing left to right
+    for jx, jy in [(0.18, 0.30), (0.32, 0.55), (0.44, 0.72)]:
+        px, py = x + w * jx, y + h * jy
+        d.polygon([(px, py - 4), (px + 12, py), (px, py + 4), (px + 4, py)],
+                  fill=(40, 40, 40))
+    d.text((x + w * 0.10, y + h * 0.06), "15 CROSSED", font=SANSB(9), fill=RED)
+
+
 def ill_f1(d, x, y, w, h):
     d.rectangle([x, y, x + w, y + h], fill=(20, 20, 28))
     # track
@@ -687,8 +757,8 @@ ILLS = {
     "bahrain": ill_bahrain, "sparta": ill_sparta, "cop31": ill_cop31,
     "peru": ill_peru, "elchapo": ill_elchapo, "paris": ill_paris,
     "geneva": ill_geneva, "bepi": ill_bepi, "euindo": ill_euindo,
-    "basra": ill_basra, "nigeria": ill_nigeria, "f1": ill_f1,
-    "cricket": ill_cricket,
+    "basra": ill_basra, "nigeria": ill_nigeria, "manipur": ill_manipur,
+    "taiwan": ill_taiwan, "f1": ill_f1, "cricket": ill_cricket,
 }
 
 # ------------------------------------------------------------ world map
@@ -811,7 +881,7 @@ def draw_page():
     d.text((W // 2, 30), "Saturday 21 November 2026", font=SERIFB(54),
            fill=INK, anchor="ma")
     d.text((W // 2, 88), "Iran strikes Bahrain as tankers hit in Hormuz · Drones set Russian "
-           "ship ablaze · COP31 runs into overtime",
+           "ship ablaze · COP31 deadlocked over fossil fuels",
            font=SANS(15), fill=INK, anchor="ma")
     d.line([(M, 110), (W - M, 110)], fill=INK, width=1)
 

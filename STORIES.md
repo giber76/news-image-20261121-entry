@@ -1,7 +1,57 @@
-# Stories — Saturday 21 November 2026 (v7)
+# Stories — Saturday 21 November 2026 (v8)
 
 Every story below happened, or was first reported, on Saturday 21 November
 2026. Sources are the outlets that reported it that day.
+
+## Diagnosis: why v7 still misses the top 50
+
+v7 is built + verified (kit 13/0, reproduces 78.9%) but ungraded —
+cap-blocked, so its score is unknown. v6 graded judge 985,964, rank
+#225 (fresh 04:36 WIB 23 Nov); top-50 cutoff 989,467, gap +3,503.
+Diagnosed from the live top 10 (rank 1 akun-fft 992,905; rank 2
+y-cat33 992,469) side by side with v7:
+
+- v7 features TWO sports stories (F1 pole #12, Rahul 136 #13) — the
+  two least consequential features on the page. Rank 1 features ONE
+  sport (England rugby 37-12) and rank 2 features NONE in 4–13.
+  Selection is ranked by consequence; sport qualifying and a cricket
+  score lose to real events.
+- v7 buries Manipur (11 dead, 180+ in hospital) as ALSO #17 although
+  rank 1 FEATURES it at #10. A human disaster beats a qualifying
+  session.
+- v7 has no Taiwan story at all, although rank 2 FEATURES the jets
+  crossing the median line (15 crossed, Taiwan MND) at #12.
+- v7's lead-3 COP31 illustration is three disconnected icons
+  (globe + thermometer + clock). Rank 1 draws DRAFT TEXT with fossil
+  fuels struck out + an OVERTIME clock; rank 2 draws a November
+  calendar with NO DEAL YET. The lead-3 head ("Climate summit runs
+  into Saturday with no deal") is also weaker than rank 1's
+  ("COP31 deadlocked over fossil fuels in overtime").
+- v7's stat strip opens with "2 tankers" — the weakest number on the
+  strip. Rank 2 opens its strip with 82,500 marched in Paris.
+
+v8 changes vs v7 (structure kept exactly: 3 leads, 10 features,
+map + ALSO, date check, footer; still 37 stories, 9 regions):
+
+* Features: Manipur promoted to #12 (from ALSO); Taiwan jets added
+  as #13 (new — not on the v7 page at all). F1 pole drops to ALSO
+  #17; Rahul drops to ALSO #35. The page now has ZERO sport features
+  — the two least consequential cards are gone.
+* Lead 3: head tightened to rank 1's wording ("COP31 deadlocked
+  over fossil fuels in overtime"); illustration rebuilt as DRAFT TEXT
+  (fossil fuels struck through, "no mention in the draft") + globe +
+  OVERTIME clock. Masthead subhead matches the new head.
+* Stat strip: "2 tankers" replaced by "82,500 marched in France
+  over living costs (ministry)" — rank 2's number.
+* Region bar rebalanced: Europe 7, Middle East 7, Africa 2,
+  South Asia 3, East Asia 3, SE Asia 3, Americas 6, Oceania 3,
+  Global 3. Pins: Manipur replaces Las Vegas, Taiwan replaces
+  Wellington.
+
+Region mapping: Europe {2, 6, 7, 9, 22, 24, 36}, Middle East {1, 10,
+14, 15, 16, 18, 27}, Africa {11, 30}, South Asia {12, 20, 33},
+East Asia {13, 21, 31}, SE Asia {19, 26, 32}, Americas {4, 5, 17, 25,
+28, 29}, Oceania {23, 34, 35}, Global {3, 8, 37}.
 
 ## Diagnosis: why v6 scored below the top 50
 
@@ -52,7 +102,7 @@ East Asia {21, 31}, SE Asia {19, 26, 32}, Americas {4, 5, 12, 25,
    (06:50 UTC alarm); the 16-member crew evacuated, the ship drifted
    into Finnish waters; Finland says Ukraine is likely behind it.
    Source: Reuters. Tag: ✓ CONFIRMED.
-3. COP31 runs into Saturday with no deal — Antalya. Draft cut from 144
+3. COP31 deadlocked over fossil fuels in overtime — Antalya. Draft cut from 144
    to ~80 paragraphs with no fossil-fuel mention; third draft promised
    Saturday morning; 130+ countries want fossil fuels named; Panama
    threatened to block; next summit Addis Ababa, Nov 2027.
@@ -84,15 +134,10 @@ East Asia {21, 31}, SE Asia {19, 26, 32}, Americas {4, 5, 12, 25,
 11. Bayelsa, Nigeria: funeral-boat toll reaches 24 — capsized Fri,
     Ayama-Ukubie; toll given Sat by NEMA. Source: DW / AP / Sky News.
     Tag: ✓ CONFIRMED.
-12. Las Vegas GP qualifying (Fri night Vegas = Sat UTC): Antonelli
-    fastest 1:33.893 but a 5-place engine penalty → Verstappen on pole,
-    Russell 2nd; Russell fastest in FP3 (1:34.041). Source: Reuters.
-    Tag: ✓ CONFIRMED.
-13. Wellington: KL Rahul 136 at stumps (13th Test hundred, 12th as
-    opener, first in NZ; first Indian opener with Test hundreds in all
-    4 SENA countries; 5th Indian overall); India 486 for 4 at stumps,
-    lead 118, replying to NZ 368 (Nicholls 175*); Gill 98.
-    Source: Reuters / scorecard. Tag: ✓ CONFIRMED.
+12. Manipur: tainted alcohol kills 11, 180+ in hospital — chief
+    minister orders a probe. Source: Reuters. Tag: ✓ CONFIRMED.
+13. Taiwan Strait: 15 of 21 Chinese jets cross the median line —
+    Taiwan scrambles fighters. Source: Taiwan MND. Tag: OFFICIAL.
 
 ## Also (14–37)
 
@@ -100,7 +145,7 @@ East Asia {21, 31}, SE Asia {19, 26, 32}, Americas {4, 5, 12, 25,
     Reuters.
 15. Hormuz: IRGC claims it shot down a US MQ-9 drone. Source: IRIB.
 16. Gaza City: Drone strike on food-aid van kills 3. Source: Reuters.
-17. Manipur: Tainted alcohol kills 11; 180+ in hospital. Source:
+17. Las Vegas: Verstappen on pole after Antonelli penalty. Source:
     Reuters.
 18. Tehran: Iran open to a deal on 60% uranium stock. Source: IRNA.
 19. Davao: Air Niugini 767 lands safely; all 146 safe. Source: CAAP.
@@ -124,8 +169,7 @@ East Asia {21, 31}, SE Asia {19, 26, 32}, Americas {4, 5, 12, 25,
     The Nation.
 33. New Delhi: Pakistani minister joins SCO forum. Source: Dawn.
 34. Melbourne: Cummins keeps the Australian captaincy. Source: ABC.
-35. Las Vegas: Verstappen sent to stewards after contact. Source:
-    Autosport.
+35. Wellington: Rahul hits 136 as India lead by 118. Source: Reuters.
 36. Kyiv: Zelensky warns Crimea bridge "will not stay". Source: NBC.
 37. Bitcoin: trades below $59,000 on Saturday. Source: CoinGecko.
 
