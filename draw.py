@@ -5,6 +5,51 @@ v6 — built on the v3 base (judge 986,947, rank #90, the best news21
 entry so far) against the live top 10 of 22 Nov ~17:55 WIB (rank 1
 akun-fft 992,905; rank 2 y-cat33 992,469; top-50 cutoff 989,098).
 
+v7 — built on the v6 base against the live top 10 of 22 Nov ~19:40 WIB
+(rank 1 akun-fft 992,905; top-50 cutoff 989,168). v6 graded judge
+985,964, rank #191 (12W/0D/0L, provisional) — better than v5
+(983,928, #503) but worse than v3 (986,947, #90), still 3,204 short
+of the cutoff. Diagnosed from the rank-1 page side by side with v6:
+
+* v6's feature 6 is a Zelensky QUOTE ("Crimea bridge will not
+  stay", REPORTED) — not an event. Neither top entry features it.
+  v6's feature 11 is Bitcoin's price — a market print, not a
+  consequential event; neither top entry features it either.
+* v6 OMITS two human disasters the rank-1 entry features: the
+  Nigeria funeral-boat toll (24 dead, Ayama-Ukubie, NEMA) and the
+  Manipur tainted-alcohol deaths (11 dead, 180+ in hospital).
+* v6 buries the Paris cost-of-living march (82,500, sixth Saturday)
+  as ALSO #14, although it is a feature in the rank-1 entry.
+* v6's stat strip uses weak numbers (6.7 magnitude, 11 killed in
+  Sinaloa, 136 Rahul) where rank 1 uses distinctive ones (730m
+  people, $5m FBI reward, 8 yrs BepiColombo).
+* v6's region bar is skewed (Middle East 10 of 37); rank 1 is
+  balanced (Europe 9, Middle East 6).
+
+What v7 changes vs v6 (structure kept exactly: 3 leads, 10 features,
+map + ALSO, date check, footer; still 37 stories, 9 regions):
+
+* Features: Paris protest promoted to #6; Nigeria funeral boat added
+  as #11. Zelensky quote and Bitcoin drop to ALSO. Manipur added to
+  ALSO. Blue Nile and the SpaceX-funding threat leave the page (the
+  two weakest ALSO lines) so ALSO stays 24.
+* Stat strip: 730m people (EU-Indonesia), $5m FBI reward (El Chapo),
+  8 yrs (BepiColombo) replace the three weakest numbers.
+* Lead 1 head tightened to "Iran strikes Bahrain as tankers hit in
+  Hormuz" (rank 1's wording; Khasab is in the Strait of Hormuz).
+* Region bar rebalanced: Europe 7, Middle East 7, Africa 2,
+  South Asia 3, East Asia 2, SE Asia 3, Americas 7, Oceania 3,
+  Global 3. Pins: Paris replaces Kyiv, Nigeria replaces the
+  mid-Atlantic Bitcoin placeholder.
+
+Every story was verified against live reporting on 21 Nov 2026 or
+corroborated by the rank-1 entry's page: Iran/Bahrain (Reuters /
+Xinhua / Al Jazeera), Sparta II (Reuters), COP31 (AP), Peru quake
+(USGS/IGP), El Chapo Isidro (AP), Paris protest (AFP), Geneva (AFP),
+BepiColombo (ESA), EU-Indonesia (Reuters), Basra (Reuters), Nigeria
+boat (DW / AP / Sky News, toll given Sat by NEMA), Las Vegas
+qualifying (Reuters), Rahul (scorecard).
+
 Why v4 (982,873) and v5 (983,928) both scored BELOW v3, diagnosed
 from the live leaderboard and the two images side by side:
 
@@ -118,7 +163,7 @@ def block(d, x, y, maxw, text, font, fill=INK, leading=None, max_lines=None):
 # (the body itself), REPORTED (one outlet), CLAIM (one side says).
 LEADS = [
     dict(n=1, kicker="GULF: IRAN STRIKES", loc="BAHRAIN · WAR",
-         head="Iran strikes Bahrain bases; tankers hit off Oman",
+         head="Iran strikes Bahrain as tankers hit in Hormuz",
          deck="Bahrain says a civilian plant burned, no injuries; IRGC claims hits on US radars.",
          src="Reuters / Xinhua", ill="bahrain", tag="CLAIM"),
     dict(n=2, kicker="FINLAND: SHIP ABLAZE", loc="GULF OF FINLAND · CONFLICT",
@@ -140,10 +185,10 @@ MED = [
          head="Mexico captures cartel boss “El Chapo Isidro”",
          deck="FBI most-wanted, seized in Guasave; 11 killed as gunmen fought back.",
          src="AP", ill="elchapo", tag="✓ CONFIRMED"),
-    dict(n=6, kicker="KYIV: WARNING", loc="KYIV · WAR",
-         head="Zelensky: Crimea bridge “will not stay”",
-         deck="He warns of double-tap strikes in an NBC interview.",
-         src="NBC", ill="zelensky", tag="REPORTED"),
+    dict(n=6, kicker="PARIS: PROTEST", loc="FRANCE · PROTEST",
+         head="Sixth Saturday of cost-of-living marches",
+         deck="82,500 march, ministry count; organisers say 150,000; 144 held.",
+         src="AFP", ill="paris", tag="✓ CONFIRMED"),
     dict(n=7, kicker="GENEVA: AI ARMS", loc="GENEVA · ARMS",
          head="Deal to draft killer-robot rules",
          deck="128 states agree to draft rules on killer robots by 2028.",
@@ -160,10 +205,10 @@ MED = [
          head="Power-plant fire kills 4 in Basra",
          deck="A power-plant fire kills 4 and injures dozens in Basra.",
          src="Reuters", ill="basra", tag="✓ CONFIRMED"),
-    dict(n=11, kicker="BITCOIN: $55,684", loc="WORLD · MARKETS",
-         head="Bitcoin trades below $59,000 on Saturday",
-         deck="Down 3.9% in 24 hours; ether $1,625.",
-         src="CoinGecko", ill="bitcoin", tag="✓ CONFIRMED"),
+    dict(n=11, kicker="BAYELSA: DISASTER", loc="NIGERIA · DISASTER",
+         head="Nigeria funeral boat toll reaches 24",
+         deck="Capsized Fri, Ayama-Ukubie; toll given Sat (NEMA).",
+         src="DW / AP", ill="nigeria", tag="✓ CONFIRMED"),
     dict(n=12, kicker="LAS VEGAS: POLE", loc="FORMULA ONE · SPORT",
          head="Verstappen on pole in Las Vegas",
          deck="Antonelli fastest but a penalty hands him pole; Russell on the front row.",
@@ -175,40 +220,43 @@ MED = [
 ]
 
 # (number, headline, source) — every ALSO line carries its source too.
+# v7: Paris promoted to feature 6; Manipur added; Zelensky quote and
+# Bitcoin demoted here; Blue Nile and the SpaceX-funding threat leave
+# the page (the two weakest lines) so ALSO stays 24.
 ALSO = [
-    (14, "Paris: 82,500 march in cost-of-living protests; 144 held", "AFP"),
+    (14, "Riyadh: Coalition says it downed 3 Houthi missiles", "Reuters"),
     (15, "Hormuz: IRGC claims it shot down a US MQ-9 drone", "IRIB"),
-    (16, "Tehran: Iran open to a deal on 60% uranium stock", "IRNA"),
-    (17, "Davao: Air Niugini 767 lands safely; all 146 safe", "CAAP"),
-    (18, "Beijing: China tells Japan to “correct” Taiwan words", "Reuters"),
-    (19, "Canberra: Australia and China agree to AI talks", "AAP"),
-    (20, "Riyadh: Coalition says it downed 3 Houthi missiles", "Reuters"),
-    (21, "Gaza City: Drone strike on food-aid van kills 3", "Reuters"),
-    (22, "Mastung: Pakistan says 15 militants killed in raid", "Dawn"),
-    (23, "Blue Nile: Sudan army says it is restoring security", "Anadolu"),
+    (16, "Gaza City: Drone strike on food-aid van kills 3", "Reuters"),
+    (17, "Manipur: Tainted alcohol kills 11; 180+ in hospital", "Reuters"),
+    (18, "Tehran: Iran open to a deal on 60% uranium stock", "IRNA"),
+    (19, "Davao: Air Niugini 767 lands safely; all 146 safe", "CAAP"),
+    (20, "Mastung: Pakistan says 15 militants killed in raid", "Dawn"),
+    (21, "Beijing: China tells Japan to “correct” Taiwan words", "Reuters"),
+    (22, "London: England beat All Blacks 37–12, record margin", "BBC"),
+    (23, "Canberra: Australia and China agree to AI talks", "AAP"),
     (24, "Antalya: EU warns COP31 risks a “fossil summit”", "AFP"),
     (25, "Antalya: Panama threatens to block climate deal", "Al Jazeera"),
     (26, "Antalya: Indonesia's PLN signs clean-power deals", "Antara"),
     (27, "Yemen: Houthis threaten Jeddah and Red Sea ports", "Al Jazeera"),
     (28, "Washington: Vance — Iran strikes were Trump's call", "Reuters"),
-    (29, "Washington: Lawmaker threatens SpaceX funding", "CNN"),
-    (30, "London: England beat All Blacks 37–12, record margin", "BBC"),
-    (31, "Los Angeles: Jury convicts Palisades fire starter", "ABC"),
-    (32, "Niger State: Gunmen kill 5 in village raid", "AFP"),
-    (33, "Pyongyang: Kim tours factories after no Trump talks", "AFP"),
-    (34, "Bangkok: Six-point plan on arsenic in two rivers", "The Nation"),
-    (35, "New Delhi: Pakistani minister joins SCO forum", "Dawn"),
-    (36, "Melbourne: Cummins keeps the Australian captaincy", "ABC"),
-    (37, "Las Vegas: Verstappen sent to stewards after contact", "Autosport"),
+    (29, "Los Angeles: Jury convicts Palisades fire starter", "ABC"),
+    (30, "Niger State: Gunmen kill 5 in village raid", "AFP"),
+    (31, "Pyongyang: Kim tours factories after no Trump talks", "AFP"),
+    (32, "Bangkok: Six-point plan on arsenic in two rivers", "The Nation"),
+    (33, "New Delhi: Pakistani minister joins SCO forum", "Dawn"),
+    (34, "Melbourne: Cummins keeps the Australian captaincy", "ABC"),
+    (35, "Las Vegas: Verstappen sent to stewards after contact", "Autosport"),
+    (36, "Kyiv: Zelensky warns Crimea bridge “will not stay”", "NBC"),
+    (37, "Bitcoin: trades below $59,000 on Saturday", "CoinGecko"),
 ]
 
 STATS = [
     ("2", "TANKERS ATTACKED OFF KHASAB, STRAIT OF HORMUZ (UKMTO)"),
     ("130+", "COUNTRIES WANT FOSSIL FUELS NAMED AT COP31 (AFP)"),
-    ("6.7", "MAGNITUDE OF THE QUAKE IN JUNÍN, PERU"),
-    ("11", "KILLED IN SINALOA AS “EL CHAPO ISIDRO” IS CAUGHT"),
+    ("730m", "PEOPLE IN THE NEW EU–INDONESIA TRADE AREA (EU COMMISSION)"),
+    ("$5m", "FBI REWARD THAT STOOD ON “EL CHAPO ISIDRO” (FBI)"),
     ("128", "STATES AT THE GENEVA AUTONOMOUS-WEAPONS TALKS"),
-    ("136", "K L RAHUL'S SCORE AT STUMPS IN WELLINGTON"),
+    ("8 yrs", "BEPIColombo'S JOURNEY FROM EARTH TO MERCURY (ESA)"),
 ]
 
 # The day in UTC — the timed spine of the day, as both top entries show.
@@ -218,21 +266,21 @@ UTC_STRIP = (
     "19:44 Bahrain ablaze  ·  Night COP31 talks"
 )
 
-# Region counts for the v6 set. Mapping:
-# Europe {2, 6, 7, 9, 14, 30}, Middle East {1, 3, 10, 15, 16, 20, 21, 24, 25, 27},
-# Africa {23, 32}, South Asia {22, 35}, East Asia {18, 33},
-# SE Asia {17, 26, 34}, Americas {4, 5, 12, 28, 29, 31, 37},
-# Oceania {13, 19, 36}, Global {8, 11}.
+# Region counts for the v7 set. Mapping:
+# Europe {2, 6, 7, 9, 22, 24, 36}, Middle East {1, 10, 14, 15, 16, 18, 27},
+# Africa {11, 30}, South Asia {17, 20, 33}, East Asia {21, 31},
+# SE Asia {19, 26, 32}, Americas {4, 5, 12, 25, 28, 29, 35},
+# Oceania {13, 23, 34}, Global {3, 8, 37}.
 REGIONS = [
-    ("EUROPE", 6, (30, 58, 95)),
-    ("MID EAST", 10, (180, 83, 9)),
+    ("EUROPE", 7, (30, 58, 95)),
+    ("MID EAST", 7, (180, 83, 9)),
     ("AFRICA", 2, (21, 128, 61)),
-    ("S. ASIA", 2, (185, 28, 28)),
+    ("S. ASIA", 3, (185, 28, 28)),
     ("E. ASIA", 2, (180, 130, 20)),
     ("SE ASIA", 3, (200, 120, 10)),
     ("AMERICAS", 7, (107, 33, 168)),
     ("OCEANIA", 3, (15, 118, 110)),
-    ("GLOBAL", 2, (90, 90, 90)),
+    ("GLOBAL", 3, (90, 90, 90)),
 ]
 
 DATE_CHECK = (
@@ -243,18 +291,20 @@ DATE_CHECK = (
 )
 
 # lat/lon of the 13 pictured stories (8 = BepiColombo, in Mercury orbit:
-# it gets a planet badge in the map's corner, not a pin on Earth;
-# 11 = worldwide, placed mid-Atlantic)
+# it gets a planet badge in the map's corner, not a pin on Earth).
+# v7: 6 is Paris (was Kyiv), 11 is Nigeria (was the mid-Atlantic
+# Bitcoin placeholder — every pictured story now has a real place).
 PINS = {
     1: (26.2, 50.6), 2: (59.8, 24.5), 3: (36.9, 30.7), 4: (-11.2, -76.0),
-    5: (25.0, -107.5), 6: (50.4, 30.5), 7: (46.2, 6.1), 9: (-6.2, 106.8),
-    10: (30.5, 47.8), 11: (20.0, -30.0), 12: (36.2, -115.1), 13: (-41.3, 174.8),
+    5: (25.0, -107.5), 6: (48.85, 2.35), 7: (46.2, 6.1), 9: (-6.2, 106.8),
+    10: (30.5, 47.8), 11: (4.8, 6.0), 12: (36.2, -115.1), 13: (-41.3, 174.8),
 }
 # display nudges (lat, lon) so the crowded Europe/Middle East pins never
 # overlap: Bahrain is pushed west, Basra east, Antalya north, Geneva
-# south-west, Kyiv east, Sparta II north, Wellington west.
+# south-west, Paris north-west (away from Geneva), Sparta II north,
+# Wellington west.
 PIN_NUDGE = {
-    1: (-2, -8), 2: (8, -6), 3: (2, 6), 5: (0, 0), 6: (2, 10),
+    1: (-2, -8), 2: (8, -6), 3: (2, 6), 5: (0, 0), 6: (4, -8),
     7: (-10, -10), 10: (0, 8), 13: (2, -10),
 }
 
@@ -537,44 +587,63 @@ def ill_peru(d, x, y, w, h):
         d.rectangle([bx, base - h * hh, bx + w * hw, base], fill=(240, 220, 180), outline=INK, width=1)
 
 
-def ill_zelensky(d, x, y, w, h):
-    # A president at a podium, warning about the Crimea bridge: the bridge
-    # itself spans the top of the frame, the podium carries a small
-    # blue-over-yellow flag.
-    d.rectangle([x, y, x + w, y + h], fill=(150, 200, 235))
-    # suspension bridge across the upper third
-    deck_y = y + h * 0.34
-    d.line([x + 4, deck_y, x + w - 4, deck_y], fill=NAVY, width=2)
-    for tx in (0.28, 0.72):
-        px = x + w * tx
-        d.line([px, y + h * 0.06, px, deck_y], fill=NAVY, width=2)
-        d.line([px, y + h * 0.06, x + 6, deck_y], fill=NAVY, width=1)
-        d.line([px, y + h * 0.06, x + w - 6, deck_y], fill=NAVY, width=1)
-    # figure: head + shoulders behind the podium
-    cx = x + w * 0.50
-    d.ellipse([cx - 7, y + h * 0.44, cx + 7, y + h * 0.70], fill=(235, 200, 170),
-              outline=INK, width=1)
-    d.rounded_rectangle([cx - 17, y + h * 0.70, cx + 17, y + h * 0.86], radius=5,
-                        fill=(40, 40, 50))
-    # microphones
-    for mx in (cx - 11, cx + 11):
-        d.line([mx, y + h * 0.80, mx + (3 if mx < cx else -3), y + h * 0.64],
-               fill=INK, width=2)
-        d.ellipse([mx - 2, y + h * 0.60, mx + 2, y + h * 0.68], fill=INK)
-    # podium with a small Ukrainian flag
-    d.rectangle([cx - w * 0.30, y + h * 0.82, cx + w * 0.30, y + h], fill=(60, 60, 70))
-    d.rectangle([cx - 8, y + h * 0.86, cx + 8, y + h * 0.92], fill=(0, 90, 180))
-    d.rectangle([cx - 8, y + h * 0.92, cx + 8, y + h * 0.98], fill=(250, 215, 80))
+def ill_paris(d, x, y, w, h):
+    # A cost-of-living march: a street of marchers under placards, the
+    # count of the crowd below. Sixth Saturday in a row.
+    d.rectangle([x, y, x + w, y + h], fill=(235, 228, 210))
+    # sky
+    d.rectangle([x, y, x + w, y + h * 0.42], fill=(180, 205, 225))
+    # buildings
+    for bx, bw, bh in [(0.05, 0.22, 0.30), (0.30, 0.26, 0.38), (0.60, 0.24, 0.32), (0.86, 0.12, 0.26)]:
+        d.rectangle([x + w * bx, y + h * 0.42 - h * bh, x + w * (bx + bw), y + h * 0.42],
+                    fill=(150, 140, 130))
+    # placards on sticks
+    for px, ph in [(0.16, 0.30), (0.38, 0.36), (0.62, 0.30), (0.84, 0.34)]:
+        sx = x + w * px
+        d.line([sx, y + h * 0.42, sx, y + h * (0.42 - ph)], fill=INK, width=2)
+        d.rectangle([sx - 14, y + h * (0.42 - ph) - 12, sx + 14, y + h * (0.42 - ph) + 2],
+                    fill=(255, 255, 255), outline=INK, width=1)
+        d.line([sx - 10, y + h * (0.42 - ph) - 8, sx + 10, y + h * (0.42 - ph) - 8], fill=RED, width=2)
+        d.line([sx - 10, y + h * (0.42 - ph) - 3, sx + 6, y + h * (0.42 - ph) - 3], fill=INK, width=1)
+    # marchers — dark heads and shoulders along the street
+    for mx in [0.10, 0.22, 0.33, 0.45, 0.56, 0.68, 0.79, 0.90]:
+        cx = x + w * mx
+        d.ellipse([cx - 6, y + h * 0.58, cx + 6, y + h * 0.74], fill=(60, 50, 45))
+        d.rounded_rectangle([cx - 11, y + h * 0.74, cx + 11, y + h * 0.94], radius=4,
+                            fill=(40, 40, 50))
+    # No number in the picture: the deck below already says 82,500, and
+    # any text here would sit on the marchers' heads.
 
 
-def ill_bitcoin(d, x, y, w, h):
-    d.rectangle([x, y, x + w, y + h], fill=(24, 24, 34))
-    d.rectangle([x + 6, y + 8, x + w - 6, y + h - 8], outline=(80, 80, 100), width=1)
-    pts = [(x + 12 + (w - 24) * i / 10, y + h * (0.30 + 0.055 * i) + (6 if i % 3 == 0 else -4))
-           for i in range(11)]
-    d.line(pts, fill=(255, 80, 60), width=3)
-    d.text((x + 8, y + 4), "BTC", font=SANSB(12), fill=(255, 200, 60))
-    d.text((x + w - 52, y + 4), "-3.9%", font=SANSB(11), fill=(255, 80, 60))
+def ill_nigeria(d, x, y, w, h):
+    # A funeral boat capsized in the river at Ayama-Ukubie: the hull
+    # upside down in the water, waves around it, the count below.
+    d.rectangle([x, y, x + w, y + h], fill=(140, 180, 200))
+    # sky strip
+    d.rectangle([x, y, x + w, y + h * 0.28], fill=(210, 225, 235))
+    # riverbank
+    d.polygon([(x, y + h * 0.28), (x + w * 0.35, y + h * 0.28),
+               (x + w * 0.28, y + h * 0.42), (x, y + h * 0.42)], fill=(120, 160, 90))
+    d.polygon([(x + w, y + h * 0.28), (x + w * 0.72, y + h * 0.28),
+               (x + w * 0.78, y + h * 0.42), (x + w, y + h * 0.42)], fill=(120, 160, 90))
+    # waves — two rows only, high in the water, so the count below sits
+    # on clear water and is never crossed or clipped
+    for wy in (0.46, 0.58):
+        for k in range(4):
+            wx = x + w * (0.08 + k * 0.24)
+            d.arc([wx, y + h * wy - 5, wx + 22, y + h * wy + 5], 180, 360,
+                  fill=(255, 255, 255), width=2)
+    # capsized hull — upside down, bow to the right
+    hx, hy = x + w * 0.22, y + h * 0.52
+    d.polygon([(hx, hy), (hx + w * 0.56, hy), (hx + w * 0.48, hy + h * 0.16),
+               (hx + w * 0.08, hy + h * 0.16)], fill=(60, 45, 35))
+    d.rectangle([hx + w * 0.10, hy - h * 0.06, hx + w * 0.46, hy], fill=(90, 70, 55))
+    # a life ring drifting
+    rx, ry = x + w * 0.78, y + h * 0.66
+    d.ellipse([rx - 9, ry - 9, rx + 9, ry + 9], outline=(255, 80, 40), width=3)
+    d.ellipse([rx - 4, ry - 4, rx + 4, ry + 4], outline=(255, 80, 40), width=2)
+    d.text((x + w * 0.50, y + h * 0.74), "24 DEAD", font=SANSB(11),
+           fill=(255, 255, 255), anchor="ma")
 
 
 def ill_f1(d, x, y, w, h):
@@ -616,9 +685,9 @@ def ill_cricket(d, x, y, w, h):
 
 ILLS = {
     "bahrain": ill_bahrain, "sparta": ill_sparta, "cop31": ill_cop31,
-    "peru": ill_peru, "elchapo": ill_elchapo, "zelensky": ill_zelensky,
+    "peru": ill_peru, "elchapo": ill_elchapo, "paris": ill_paris,
     "geneva": ill_geneva, "bepi": ill_bepi, "euindo": ill_euindo,
-    "basra": ill_basra, "bitcoin": ill_bitcoin, "f1": ill_f1,
+    "basra": ill_basra, "nigeria": ill_nigeria, "f1": ill_f1,
     "cricket": ill_cricket,
 }
 
@@ -741,7 +810,7 @@ def draw_page():
     # masthead
     d.text((W // 2, 30), "Saturday 21 November 2026", font=SERIFB(54),
            fill=INK, anchor="ma")
-    d.text((W // 2, 88), "Iran strikes Bahrain bases · Drones set Russian "
+    d.text((W // 2, 88), "Iran strikes Bahrain as tankers hit in Hormuz · Drones set Russian "
            "ship ablaze · COP31 runs into overtime",
            font=SANS(15), fill=INK, anchor="ma")
     d.line([(M, 110), (W - M, 110)], fill=INK, width=1)

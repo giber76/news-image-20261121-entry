@@ -17,7 +17,7 @@ each one.
 
 ## Leads
 
-1. **Iran strikes Bahrain bases; tankers hit off Oman** — Bahrain says a
+1. **Iran strikes Bahrain as tankers hit in Hormuz** — Bahrain says a
    civilian plant burned; the IRGC claims hits on US radars; UKMTO
    reports two tankers struck off Khasab.
 2. **Drones set Russian cargo ship ablaze off Finland** — Sparta II's
